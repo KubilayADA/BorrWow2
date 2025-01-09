@@ -1,0 +1,7 @@
+[build]
+  base = "frontend_borrWow"
+  publish = "frontend_borrWow/build"
+  functions = "../backend"
+
+[functions]
+  directory = "../backend"
