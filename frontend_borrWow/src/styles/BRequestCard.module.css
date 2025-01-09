@@ -1,0 +1,102 @@
+/* BRequestCard.module.css */
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: #ffffff;
+  max-width: 300px;
+  margin: 16px;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.details {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.buttonContainer {
+  margin-top: auto;
+  text-align: right;
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.itemNameContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemName {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+  z-index: 2; /* Ensure item name is above other elements */
+}
+
+.status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px 12px;
+  font-weight: bold;
+  color: #ffffff;
+  border-bottom-right-radius: 12px;
+  z-index: 1; /* Place status behind item name */
+  background-color: #999; /* Default background color */
+}
+
+.status.pending {
+  background-color: #ffad8a; /* Light orange */
+}
+
+.status.accepted {
+  background-color: #9aff9a; /* Light green */
+}
+
+.status.rejected {
+  background-color: #ff8c8c; /* Light red */
+}
+
+.status.completed {
+  background-color: #9ca3ff; /* Light blue */
+}
+
+.locationValue {
+  font-style: italic; /* Italics for location values */
+}
+
+.requestDateValue {
+  font-style: italic; /* Italics for request date values */
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .image {
+    height: 150px;
+  }
+  .card {
+    margin: 8px;
+  }
+}

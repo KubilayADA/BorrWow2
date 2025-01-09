@@ -1,0 +1,31 @@
+.container {
+  width: 50%;
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px; /* Adds padding around the content */
+  text-align: left;
+}
+
+.form {
+  width: 100%; /* Ensure the form uses the full width of the container */
+}
+
+.inputWrapper {
+  margin-bottom: 1rem; /* Adds spacing between form elements */
+}
+
+input,
+select,
+textarea {
+  width: 100%; /* Ensure form fields use the full width */
+}
+
+label {
+  display: block; /* Makes sure the label is on its own line */
+  margin-bottom: 0.5rem; /* Adds space between the label and input field */
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Adds space between the buttons */
+}

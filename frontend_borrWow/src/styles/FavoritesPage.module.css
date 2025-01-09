@@ -1,0 +1,36 @@
+.page {
+  padding: 40px; /* Match padding to the ItemListPage */
+  background-color: #f9f9f9; /* Light gray background */
+  text-align: center; /* Center all text within the page */
+}
+
+.headline {
+  text-align: center; /* Center the headline specifically */
+  margin-bottom: 20px; /* Space below the headline */
+}
+
+.itemsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: center; /* Center the cards horizontally */
+  text-align: left;
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: #ffffff;
+  max-width: 300px;
+  margin: 16px;
+  position: relative;
+  text-align: left;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}

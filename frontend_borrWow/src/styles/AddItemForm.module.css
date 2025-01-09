@@ -1,0 +1,5 @@
+.container {
+  width: 50%;
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px; /* Optional: adds padding around the content */
+}

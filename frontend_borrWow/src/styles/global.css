@@ -1,0 +1,18 @@
+/* Ensure html and body take up the full height of the viewport */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Flex-grow to allow main content to take available space */
+main {
+  flex: 1;
+}

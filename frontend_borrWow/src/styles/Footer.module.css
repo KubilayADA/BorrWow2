@@ -1,0 +1,24 @@
+.footer {
+  padding: 5px; /* Reduced padding to make the footer narrower */
+  background-color: #f1f1f1; /* Light background color */
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow to the top of the footer */
+  margin-top: auto; /* Push the footer to the bottom of the container */
+  text-align: center;
+  line-height: 1.2rem; /* Adjust line-height for reduced spacing */
+  display: flex;
+  font-size: 0.8rem;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  gap: 5px; /* Minimal space between links and the "All rights reserved" text */
+}
+
+.footer a {
+  text-decoration: none;
+  color: #224eff; /* Link color */
+  margin: 0 5px; /* Reduced margin between links */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Underline on hover */
+}

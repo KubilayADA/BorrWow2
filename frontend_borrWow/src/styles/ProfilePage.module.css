@@ -1,0 +1,37 @@
+.pageContainer {
+  padding: 20px;
+}
+
+.profileSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Space between card and editable info */
+  margin-top: 60px;
+}
+
+.profileCard {
+  flex: 1; /* Allow card to take available space */
+}
+
+.editableInfo {
+  flex: 2; /* Allow editable info to take more space than card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Align items to the top and bottom */
+  max-width: 400px; /* Adjust width as needed */
+}
+
+.textInput {
+  margin-bottom: 16px; /* Space between input fields */
+}
+
+@media (max-width: 768px) {
+  .profileSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .editableInfo {
+    max-width: 100%;
+  }
+}

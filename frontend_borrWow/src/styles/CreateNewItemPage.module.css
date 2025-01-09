@@ -1,0 +1,21 @@
+.container {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.center {
+  text-align: start;
+  flex-direction: column;
+}
+
+.loginLink {
+  text-decoration: none; /* Remove default link styles */
+}
+
+.formContainer {
+  height: 80vh;
+  display: flex;
+}

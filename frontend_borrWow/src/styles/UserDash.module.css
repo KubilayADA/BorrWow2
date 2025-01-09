@@ -1,0 +1,49 @@
+.container {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  text-align: center;
+  flex-direction: column;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.loginLink {
+  text-decoration: none;
+}
+
+.activity {
+  margin-top: 40px;
+  border: 2px gray solid;
+  border-radius: 20px;
+  background-color: rgb(114, 134, 222);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+}
+
+.textWithSpacing {
+  margin-bottom: 20px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 243px); /* Two columns, each 400px wide */
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px;
+  justify-content: center; /* Center the grid within the container */
+}

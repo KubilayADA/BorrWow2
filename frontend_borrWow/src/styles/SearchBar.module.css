@@ -1,0 +1,39 @@
+/* SearchBar.module.css */
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between input and button */
+  height: 36px; /* Match button height */
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px;
+  border: none; /* Remove default border */
+  border-radius: 4px;
+  height: 100%; /* Match height of form */
+  box-shadow: 0 0 0 1px #ddd; /* Initial thin border simulation */
+  transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
+}
+
+.searchInput:focus {
+  box-shadow: 0 0 0 1px #224eff; /* Thinner border effect on focus */
+  outline: none; /* Remove default outline on focus */
+}
+
+.searchButton {
+  padding: 6px 16px;
+  font-size: 1rem;
+  background-color: #224eff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 100%; /* Match height of form */
+  font-weight: 500;
+}
+
+.searchButton:hover {
+  background-color: #1f46e6;
+}
