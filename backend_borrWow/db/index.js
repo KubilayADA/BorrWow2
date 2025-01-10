@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // Use the MongoDB URI with authentication details
 const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://admin:yourSecurePassword@127.0.0.1:27017/borrWowAPI?authSource=admin";
+  process.env.MONGODB_URI || `mongodb://admin:${process.env.MONGO_PASSWORD}@127.0.0.1:27017/borrWowAPI?authSource=admin`;
 
 const withDB = async (serverListener) => {
   try {
