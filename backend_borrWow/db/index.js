@@ -1,12 +1,8 @@
-// ℹ️ package responsible to make the connection with mongodb
-// https://www.npmjs.com/package/mongoose
 const mongoose = require("mongoose");
 
-// ℹ️ Sets the MongoDB URI for our app to have access to it.
-// If no env has been set, we dynamically set it to whatever the folder name was upon the creation of the app
-
+// Use the MongoDB URI with authentication details
 const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/borrWowAPI";
+  process.env.MONGODB_URI || "mongodb://admin:yourSecurePassword@127.0.0.1:27017/borrWowAPI?authSource=admin";
 
 const withDB = async (serverListener) => {
   try {
