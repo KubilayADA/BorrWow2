@@ -1,0 +1,285 @@
+[{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445378"
+  },
+  "itemname": "Smartphone",
+  "description": "Latest model with high-resolution camera and fast processor. It comes with a sleek design and long-lasting battery. Perfect for photography enthusiasts and tech lovers alike. The phone is in excellent condition and has been carefully maintained.",
+  "category": "Electronics",
+  "location": "Mitte",
+  "owner": "669f656a7a7a7bee180f1bcb",
+  "availability": "Available",
+  "imageUrl": "https://m.media-amazon.com/images/I/81Wwngkh2OL.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445379"
+  },
+  "itemname": "Portable Speaker",
+  "description": "Waterproof and Bluetooth-enabled speaker. It provides excellent sound quality and is ideal for outdoor activities. The speaker is compact and easy to carry. It also has a long battery life for extended use.",
+  "category": "Electronics",
+  "location": "Kreuzberg",
+  "owner": "60d5c0f4f4e7e6d302f9f0d2",
+  "availability": "Available",
+  "imageUrl": "https://cdn.thewirecutter.com/wp-content/media/2022/11/portablebluetoothspeakers-2048px-3047.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744537a"
+  },
+  "itemname": "Lipstick",
+  "description": "Red matte lipstick with a long-lasting formula. It has a smooth application and rich pigment. Ideal for special occasions or everyday wear. The lipstick is from a well-known brand and has been gently used.",
+  "category": "Beauty",
+  "location": "Charlottenburg",
+  "owner": "60d5c0f4f4e7e6d302f9f0d3",
+  "availability": "Available",
+  "imageUrl": "https://img.labiosthetique.de/live-ecs/resize-cover/477/658/s/e/sensual_lipstick_creamy_c148_red_247707_3_3g_f7d65ec.jpg/sensual_lipstick_creamy_c148_red_247707_3_3g_f7d65ec.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744537b"
+  },
+  "itemname": "Guitar",
+  "description": "Acoustic guitar with a rich sound and smooth finish. The guitar is well-maintained and suitable for both beginners and professionals. It features a comfortable neck and a beautiful tone. Ideal for musical performances or practice sessions.",
+  "category": "Music",
+  "location": "Friedrichshain",
+  "owner": "60d5c0f4f4e7e6d302f9f0d4",
+  "availability": "Available",
+  "imageUrl": "https://godinguitars.com/wp-content/uploads/2020/07/49622_Godin_Nylon_Collection.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744537c"
+  },
+  "itemname": "Drill",
+  "description": "Cordless drill with multiple speed settings. It includes various drill bits and attachments for different tasks. The drill is in excellent condition and provides powerful performance. Ideal for DIY projects and home improvement.",
+  "category": "Tools",
+  "location": "Neukölln",
+  "owner": "60d5c0f4f4e7e6d302f9f0d5",
+  "availability": "Available",
+  "imageUrl": "https://cdn.thewirecutter.com/wp-content/media/2023/11/drills-2048px-8376.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744537d"
+  },
+  "itemname": "Winter Jacket",
+  "description": "Warm and stylish winter jacket with a hood. It is made of high-quality materials to keep you cozy in cold weather. The jacket has multiple pockets and a fashionable design. It is perfect for winter outings and everyday use.",
+  "category": "Clothes",
+  "location": "Schöneberg",
+  "owner": "60d5c0f4f4e7e6d302f9f0d6",
+  "availability": "Available",
+  "imageUrl": "https://www.switchbacktravel.com/sites/default/files/articles%20/Winter%20jacket%20%28Rab%20Neutrino%20Pro%20in%20the%20mountains%20-%20m%29.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744537e"
+  },
+  "itemname": "Camping Tent",
+  "description": "Durable 4-person camping tent with waterproof coating. It features easy setup and excellent ventilation. The tent is spacious and provides protection from the elements. Ideal for camping trips and outdoor adventures.",
+  "category": "Outdoor area",
+  "location": "Pankow",
+  "owner": "60d5c0f4f4e7e6d302f9f0d7",
+  "availability": "Not Available",
+  "imageUrl": "https://www.rei.com/dam/skrobecki_071217_1458_tents_camping_choose_tents_for_camping_choose_lg.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445380"
+  },
+  "itemname": "Car Wash",
+  "description": "Full-service car wash and detailing package. Includes exterior wash, interior cleaning, and wax application. The service will leave your car looking brand new. Ideal for maintaining your vehicle’s appearance.",
+  "category": "Acts of service",
+  "location": "Reinickendorf",
+  "owner": "60d5c0f4f4e7e6d302f9f0d9",
+  "availability": "Available",
+  "imageUrl": "https://media.istockphoto.com/id/1287044692/photo/worker-washing-red-car-with-sponge-on-a-car-wash.jpg?s=612x612&w=0&k=20&c=_6WO9k1qkDub5CAEQgnORMduUoQJkU6w3jjVQTdTdwQ="
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445381"
+  },
+  "itemname": "Headphones",
+  "description": "Noise-cancelling over-ear headphones. Provides immersive sound quality and comfort for long listening sessions. The headphones are adjustable and come with a carrying case. Ideal for music lovers and frequent travelers.",
+  "category": "Electronics",
+  "location": "Wedding",
+  "owner": "60d5c0f4f4e7e6d302f9f0da",
+  "availability": "Available",
+  "imageUrl": "https://cdn.thewirecutter.com/wp-content/media/2023/09/noise-cancelling-headphone-2048px-0876.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445382"
+  },
+  "itemname": "Facial Cream",
+  "description": "Hydrating facial cream with SPF protection. It nourishes and protects your skin from UV rays. The cream is suitable for daily use and has a light, non-greasy formula. Ideal for maintaining healthy and glowing skin.",
+  "category": "Beauty",
+  "location": "Lichtenberg",
+  "owner": "60d5c0f4f4e7e6d302f9f0db",
+  "availability": "Not Available",
+  "imageUrl": "https://i.shgcdn.com/4fd8d2ba-ee46-48a8-9aa7-a1dab6113038/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445383"
+  },
+  "itemname": "Piano",
+  "description": "Grand piano with a polished finish and excellent sound. The piano has been meticulously maintained and tuned. It is perfect for classical music enthusiasts and professional pianists. Ideal for home concerts and practice.",
+  "category": "Music",
+  "location": "Marzahn",
+  "owner": "60d5c0f4f4e7e6d302f9f0dc",
+  "availability": "Available",
+  "imageUrl": "https://cdn11.bigcommerce.com/s-rjo23zgaad/images/stencil/original/products/306/704/4e560ca6-6bc9-5a7a-b31d-9d47e8473ad6__52276.1646933937.jpg?c=1"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445384"
+  },
+  "itemname": "Hammer",
+  "description": "Heavy-duty hammer for construction and DIY projects. It has a sturdy handle and a strong, durable head. The hammer is well-balanced and provides excellent striking force. Ideal for various types of work.",
+  "category": "Tools",
+  "location": "Spandau",
+  "owner": "60d5c0f4f4e7e6d302f9f0dd",
+  "availability": "Available",
+  "imageUrl": "https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.625,f_auto,h_535,q_auto,w_950/c_pad,h_535,w_950/F2242251-01?pgw=1&pgwact=1"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445385"
+  },
+  "itemname": "Sunglasses",
+  "description": "Stylish sunglasses with UV protection. They feature a modern design and provide excellent clarity. The sunglasses are perfect for sunny days and outdoor activities. They come with a protective case.",
+  "category": "Clothes",
+  "location": "Tempelhof",
+  "owner": "60d5c0f4f4e7e6d302f9f0de",
+  "availability": "Available",
+  "imageUrl": "https://macv.in/cdn/shop/collections/Sunglasses_banner_Desktop_1920_x_320.png?v=1691667927"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445386"
+  },
+  "itemname": "Fishing Rod",
+  "description": "Lightweight fishing rod with a strong reel. It is designed for both freshwater and saltwater fishing. The rod is easy to handle and provides smooth casting. Ideal for fishing enthusiasts and hobbyists.",
+  "category": "Outdoor area",
+  "location": "Zehlendorf",
+  "owner": "60d5c0f4f4e7e6d302f9f0df",
+  "availability": "Not Available",
+  "imageUrl": "https://cdn.shopify.com/s/files/1/0060/3770/0678/files/how_to_cast_rod_1024x1024.png?v=1621296471"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445387"
+  },
+  "itemname": "Cookbook",
+  "description": "Collection of delicious recipes from around the world. It includes a variety of cuisines and cooking techniques. The cookbook is filled with beautiful illustrations and easy-to-follow instructions. Ideal for home cooks and food lovers.",
+  "category": "Rooms & facilities",
+  "location": "Steglitz",
+  "owner": "60d5c0f4f4e7e6d302f9f0e0",
+  "availability": "Available",
+  "imageUrl": "https://ek3286w2fxp.exactdn.com/wp-content/uploads/2023/02/cookbook-sales.jpg?strip=all&lossy=1&ssl=1"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445389"
+  },
+  "itemname": "Smartwatch",
+  "description": "Smartwatch with fitness tracking features. It monitors heart rate, steps, and sleep patterns. The watch is water-resistant and offers customizable notifications. Ideal for those looking to improve their fitness and stay connected.",
+  "category": "Electronics",
+  "location": "Lichtenberg",
+  "owner": "60d5c0f4f4e7e6d302f9f0e2",
+  "availability": "Available",
+  "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF9w0zoxXbhXSAzBkwtJizSwjhZiBiqNdHtQ&s"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744538a"
+  },
+  "itemname": "Nail Polish",
+  "description": "Long-lasting nail polish in vibrant colors. It provides a glossy finish and quick-drying formula. The polish is resistant to chipping and ideal for various occasions. Comes in a range of fashionable shades.",
+  "category": "Beauty",
+  "location": "Charlottenburg",
+  "owner": "60d5c0f4f4e7e6d302f9f0e3",
+  "availability": "Available",
+  "imageUrl": "https://www.ellamila.com/cdn/shop/articles/custom_resized_abf9276c-2772-4853-ae52-e19593607131_600x.jpg?v=1690288342"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744538b"
+  },
+  "itemname": "Drum Kit",
+  "description": "Professional drum kit with all necessary components. Includes drums, cymbals, and hardware. The kit is in excellent condition and provides a rich sound. Ideal for drummers of all skill levels.",
+  "category": "Music",
+  "location": "Kreuzberg",
+  "owner": "60d5c0f4f4e7e6d302f9f0e4",
+  "availability": "Available",
+  "imageUrl": "https://drumeoblog.s3.amazonaws.com/beat/wp-content/uploads/2024/03/26140839/2024-01-12-The-Genius-Of-The-Rev-KIT-111-1.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744538c"
+  },
+  "itemname": "Wrench Set",
+  "description": "Complete set of adjustable wrenches. The set includes various sizes to handle different tasks. The wrenches are made from high-quality materials for durability. Ideal for mechanics and DIY enthusiasts.",
+  "category": "Tools",
+  "location": "Tempelhof",
+  "owner": "60d5c0f4f4e7e6d302f9f0e5",
+  "availability": "Available",
+  "imageUrl": "https://shop.hans-tool.de/WebRoot/HostEurope2/Shops/es10603811/53DF/1516/67B6/CCCC/5EEF/50ED/8963/8F6E/TTF049.jpg"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc859744538d"
+  },
+  "itemname": "Scarf",
+  "description": "Warm and cozy scarf for winter. Made from soft, high-quality fabric that provides warmth and comfort. The scarf comes in a stylish design and various colors. Perfect for layering on cold days.",
+  "category": "Clothes",
+  "location": "Neukölln",
+  "owner": "60d5c0f4f4e7e6d302f9f0e6",
+  "availability": "Available",
+  "imageUrl": "https://www.weareknitters.de/cdn/shop/files/clover.jpg?v=1703104098"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445390"
+  },
+  "itemname": "Digital Camera",
+  "description": "High-resolution digital camera with advanced features. It offers excellent image quality and multiple shooting modes. The camera comes with a versatile lens and a sturdy carrying case. Ideal for both amateur and professional photographers.",
+  "category": "Electronics",
+  "location": "Friedrichshain",
+  "owner": "60d5c0f4f4e7e6d302f9f0e7",
+  "availability": "Available",
+  "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy_IBXR9yntOcQAd-_ZoxpEaPnkShne1xYQQ&s"
+},
+{
+  "_id": {
+    "$oid": "669fd2cb718cfc8597445391"
+  },
+  "itemname": "Bicycle",
+  "description": "Comfortable and durable bicycle with a lightweight frame. It features multiple gears and a smooth ride. The bike is well-maintained and ideal for commuting or leisure rides. Includes a front basket and rear rack.",
+  "category": "Outdoor area",
+  "location": "Wilhelmstadt",
+  "owner": "60d5c0f4f4e7e6d302f9f0e8",
+  "availability": "Available",
+  "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Left_side_of_Flying_Pigeon.jpg/1200px-Left_side_of_Flying_Pigeon.jpg"
+},
+{
+  "_id": {
+    "$oid": "67812b32597cb4f42e2fcddb"
+  },
+  "itemname": "Big JBL",
+  "description": "For BorrWow ",
+  "category": "Electronics",
+  "location": "Charlottenburg",
+  "owner": {
+    "$oid": "67812b0e597cb4f42e2fcdc9"
+  },
+  "availability": "Available",
+  "imageUrl": "https://de.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwcbb4fd11/1_JBL_BOOMBOX_3_HERO_BLACK_33216_x2.png?sw=680&sh=680",
+  "createdAt": {
+    "$date": "2025-01-10T14:14:10.455Z"
+  },
+  "updatedAt": {
+    "$date": "2025-01-10T14:14:10.455Z"
+  },
+  "__v": 0
+}]

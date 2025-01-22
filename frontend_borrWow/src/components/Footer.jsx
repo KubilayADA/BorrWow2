@@ -9,7 +9,7 @@ function Footer() {
     <footer className={styles.footer}>
       <div>
         <a
-          href="https://github.com/hannakayes/frontend_borrWow"
+          href="https://github.com/KubilayADA/BorrWow2/tree/main/frontend_borrWow"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -17,7 +17,7 @@ function Footer() {
         </a>
         |
         <a
-          href="https://github.com/mariamagneu/backend_borrWow"
+          href="https://github.com/KubilayADA/BorrWow2/tree/main/backend_borrWow"
           target="_blank"
           rel="noopener noreferrer"
         >
