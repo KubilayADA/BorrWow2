@@ -100,6 +100,20 @@
   background-color: #92c3fe;
 }
 
+.categoryLabel.furniture {
+  background-color: #9ca3ff;
+}
+
+.categoryLabel.fitness {
+  background-color: #9aff9a;
+}
+.categoryLabel.home-appliences {
+  background-color: #ff8ce6;
+}
+.categoryLabel.accessories {
+  background-color: #ff8ce6;
+}
+
 .status {
   font-size: 0.8em;
   margin-left: 8px;
