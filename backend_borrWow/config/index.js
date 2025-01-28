@@ -14,9 +14,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const FRONTEND_URL =
-  process.env.ORIGIN ||
-  process.env.ORIGIN || // If ORIGIN is set in .env, use that
-  "http://localhost:5173"; // Default to localhost for development
+process.env.ORIGIN ||
+"https://borrwow2-1-jqmk.onrender.com"; // Default to localhost for development
 
 // Middleware configuration
 module.exports = (app) => {
