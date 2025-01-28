@@ -12,6 +12,7 @@ const ItemListPage = () => {
   const { userId } = useContext(SessionContext); // Use session context to get user ID
 
   useEffect(() => {
+    console.log("API URL:", import.meta.env.VITE_API_URL);
     const fetchItems = async () => {
       console.log("Fetching items..."); // Log when fetching starts
       try {
