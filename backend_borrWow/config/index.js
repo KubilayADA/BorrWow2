@@ -15,8 +15,8 @@ const cors = require("cors");
 
 const FRONTEND_URL =
   process.env.ORIGIN ||
-  "http://localhost:5173" ||
-  "https://borrwow.netlify.app/";
+  process.env.ORIGIN || // If ORIGIN is set in .env, use that
+  "http://localhost:5173"; // Default to localhost for development
 
 // Middleware configuration
 module.exports = (app) => {
