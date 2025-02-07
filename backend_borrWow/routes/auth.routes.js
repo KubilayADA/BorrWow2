@@ -16,6 +16,7 @@ router.post("/signup", async (req, res, next) => {
   if (!username || !password) {
     return res.status(400).json({ message: "Username and password are required" });
   }
+
   const salt = bcrypt.genSaltSync(13);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
   try {
@@ -35,19 +36,19 @@ router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   try {
     const potentialUser = await User.findOne({ username });
-    if (!potentialUser) {
-      return res.status(404).json({ message: "User not found" });
+    if (potentialUser) {
+      if (bcrypt.compareSync(password, potentialUser.passwordHash)) {
+        const token = jwt.sign({ userId: potentialUser._id }, secret, {
+          algorithm: "HS256",
+          expiresIn: "6h",
+        });
+        res.json({ token }); // Only return the token
+      } else {
+        res.status(403).json({ message: "Incorrect password" });
+      }
+    } else {
+      res.status(404).json({ message: "No user with this username" });
     }
-    
-    if (!bcrypt.compareSync(password, potentialUser.passwordHash)) {
-      return res.status(403).json({ message: "Incorrect password" });
-    }
-    
-    const token = jwt.sign({ userId: potentialUser._id }, secret, {
-      algorithm: "HS256",
-      expiresIn: "6h",
-    });
-    res.json({ token });
   } catch (error) {
     next(error);
   }
