@@ -5,16 +5,16 @@
   align-items: center;
   padding: 10px 20px;
   background-color: white;
-  position: fixed; /* Fixes the navbar at the top */
-  top: 0; /* Aligns the navbar to the top */
-  width: 100%; /* Ensures the navbar spans the full width */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for better visibility */
-  z-index: 1000; /* Ensures the navbar is above other content */
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  z-index: 1000;
 }
 
-/* Adjust the padding of the main content to prevent it from being hidden behind the fixed navbar */
+
 main {
-  padding-top: 60px; /* Adjust this value if needed based on the navbar height */
+  padding-top: 60px; 
 }
 
 .navLink,
