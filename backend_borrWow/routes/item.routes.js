@@ -66,18 +66,12 @@ router.get('/search', async (req, res, next) => {
   const { query, category, location } = req.query;
 
   // Build the search query object
-  const searchQuery = {};
-
-  if (query) {
-    searchQuery.itemname = { $regex: query, $options: 'i' };
-  }
-  if (category) {
-    searchQuery.category = { $regex: category, $options: 'i' };
-  }
-  if (location) {
-    searchQuery.location = { $regex: location, $options: 'i' };
-  }
-
+  const searchQuery = {
+    ...(query && { itemname: { $regex: query, $options: 'i' } }),
+    ...(category && { category: { $regex: category, $options: 'i' } }),
+    ...(location && { location: { $regex: location, $options: 'i' } }),
+  };
+  
   try {
     console.log(`Received search query: ${query}, category: ${category}, location: ${location}`);
     
@@ -126,7 +120,8 @@ router.delete('/:id', isAuthenticated, async (req, res, next) => {
 
     if (itemToDelete.owner.equals(req.tokenPayload.userId)) {
       await Item.findByIdAndDelete(id);
-      res.status(204).send();
+  res.status(200).json({ message: 'Item successfully deleted' });
+
     } else {
       res.status(403).json({ message: 'You are not authorized to delete this item' });
     }
