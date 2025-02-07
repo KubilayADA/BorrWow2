@@ -8,10 +8,14 @@ const secret = require("../config/secretGenerator");
 // All routes start with /auth
 // Health Check Route
 router.get("/", (req, res) => {
-  res.json("All good in auth");
+  res.json({ message: "Authentication service is up and running" });
 });
 // POST Signup
 router.post("/signup", async (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required" });
+  }
   const salt = bcrypt.genSaltSync(13);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
   try {
