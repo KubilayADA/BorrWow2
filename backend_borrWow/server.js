@@ -11,6 +11,6 @@ const PORT = process.env.PORT || 5005;
 withDB(() => {
   // ℹ️ If connection was successful, start listening for requests
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server listening on http://0.0.0.0:${PORT}`);
+    console.log(`Server listening on http://0.0.0.0:${PORT}`); // change it later, setted 0.0 to atlas to be able connect
   });
 });
