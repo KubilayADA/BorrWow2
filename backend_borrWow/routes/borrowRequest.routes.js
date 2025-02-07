@@ -17,6 +17,9 @@ router.post("/", isAuthenticated, async (req, res) => {
     if (!item) {
       return res.status(404).json({ error: "Item not found" });
     }
+    if (item.owner.equals(userId)) {
+      return res.status(400).json({ error: "You cannot borrow your own item" });
+    }
 
     const borrowRequest = await BorrowRequest.create({
       item: itemId,
