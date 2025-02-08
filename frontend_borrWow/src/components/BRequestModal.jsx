@@ -63,7 +63,17 @@ const BRequestModal = ({ itemId, modalOpened, setModalOpened }) => {
         label="Select Date Range"
         value={dateRange}
         onChange={setDateRange}
-        color="#224eff"
+        styles={{
+          day: (date, modifiers) => ({
+            backgroundColor: modifiers.selected ? "#224eff" : "transparent", 
+            color: modifiers.selected ? "white" : "black", 
+            borderRadius: "8px", 
+            "&:hover": {
+              backgroundColor: modifiers.selected ? "#224eff" : "#e0ebff", 
+              cursor: "pointer", 
+            },
+          }),
+        }}
       />
       <TextInput
         label="Pickup Location"
