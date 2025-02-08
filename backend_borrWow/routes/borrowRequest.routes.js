@@ -103,14 +103,16 @@ router.put("/:id", isAuthenticated, async (req, res) => {
     }
 
     // Update only if authenticated user is the borrower or owner
-    if (
-      !borrowRequest.borrower.equals(req.tokenPayload.userId) &&
-      !borrowRequest.owner.equals(req.tokenPayload.userId)
-    ) {
-      return res.status(403).json({
-        error: "You are not authorized to update this borrow request",
-      });
-    }
+    const isAuthorizedUser = (req, res, next) => {
+      const userId = req.tokenPayload.userId;
+      if (
+        !req.borrowRequest.borrower.equals(userId) &&
+        !req.borrowRequest.owner.equals(userId)
+      ) {
+        return res.status(403).json({ error: "Unauthorized BorrWow action" });
+      }
+      next(); 
+    };
 
     // Update borrow request details
     if (pickupDate) borrowRequest.pickupDate = pickupDate;
@@ -232,38 +234,10 @@ router.put("/:id/complete", isAuthenticated, async (req, res) => {
 });
 
 // Fetch a specific borrow request by ID
-router.get("/:id", isAuthenticated, async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid ID" });
-    }
-
-    const borrowRequest = await BorrowRequest.findById(id)
-      .populate("owner")
-      .populate("borrower")
-      .populate("item");
-
-    if (!borrowRequest) {
-      return res.status(404).json({ message: "Borrow request not found" });
-    }
-
-    // Ensure the user is either the borrower or owner
-    if (
-      !borrowRequest.borrower.equals(req.tokenPayload.userId) &&
-      !borrowRequest.owner.equals(req.tokenPayload.userId)
-    ) {
-      return res.status(403).json({
-        message: "You are not authorized to view this borrow request",
-      });
-    }
-
-    res.json(borrowRequest);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+router.get("/:id", isAuthenticated, getBorrowRequest, isAuthorizedUser, (req, res) => {
+  res.json(req.borrowRequest);
 });
+
 
 // Delete a borrow request (authenticated and authorized)
 router.delete("/:id", isAuthenticated, async (req, res) => {
