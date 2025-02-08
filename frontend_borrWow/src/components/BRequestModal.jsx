@@ -57,25 +57,32 @@ const BRequestModal = ({ itemId, modalOpened, setModalOpened }) => {
       onClose={() => setModalOpened(false)}
       title="BorrWow it!"
     >
-     <DatePicker
+  <DatePicker
   type="range"
   allowSingleDateInRange
   label="Select Date Range"
   value={dateRange}
   onChange={setDateRange}
-  styles={{
-    day: (date, modifiers) => {
-      const isSelected = modifiers.selected || modifiers.inRange; // should keep dates blue within the selected range
-      return {
-        backgroundColor: isSelected ? "#224eff" : "transparent", 
-        color: isSelected ? "white" : "black", 
-        borderRadius: "8px",
-        "&:hover": {
-          backgroundColor: isSelected ? "#224eff" : "#e0ebff", 
+  renderDay={(date) => {
+    const start = dateRange[0];
+    const end = dateRange[1];
+    
+    const isInRange =
+      start && end && date >= new Date(start) && date <= new Date(end);
+    
+    return (
+      <div
+        style={{
+          backgroundColor: isInRange ? "#224eff" : "transparent", // Keep selected range blue
+          color: isInRange ? "white" : "black",
+          borderRadius: "8px",
+          padding: "5px",
           cursor: "pointer",
-        },
-      };
-    },
+        }}
+      >
+        {date.getDate()}
+      </div>
+    );
   }}
 />
       <TextInput

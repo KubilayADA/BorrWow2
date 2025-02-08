@@ -19,7 +19,6 @@ const SearchBar = () => {
     };
   };
 
-  // Navigate to search results with the query
   const handleSearch = (query) => {
     if (query) {
       navigate(`/search?query=${encodeURIComponent(query.toLowerCase())}`);
@@ -31,7 +30,7 @@ const SearchBar = () => {
   // Debounced version of handleSearch
   const debouncedSearch = useCallback(debounce(handleSearch, 300), []);
 
-  // Handle input change and trigger debounced search
+
   const handleInputChange = (event) => {
     const trimmedSearchTerm = event.target.value.trim();
     setSearchTerm(trimmedSearchTerm);
@@ -45,11 +44,11 @@ const SearchBar = () => {
         placeholder="Search..."
         value={searchTerm}
         onChange={handleInputChange}
-        className={styles.searchInput} // Apply styles to the input
+        className={styles.searchInput} 
       />
       <button type="submit" className={styles.searchButton} onClick={(e) => e.preventDefault()}>
         Search
-      </button> {/* Apply styles to the button */}
+      </button> {}
     </form>
   );
 };
