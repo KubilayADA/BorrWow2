@@ -5,24 +5,24 @@
 .profileSection {
   display: flex;
   align-items: flex-start;
-  gap: 20px; /* Space between card and editable info */
+  gap: 20px; 
   margin-top: 60px;
 }
 
 .profileCard {
-  flex: 1; /* Allow card to take available space */
+  flex: 1; 
 }
 
 .editableInfo {
-  flex: 2; /* Allow editable info to take more space than card */
+  flex: 2; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Align items to the top and bottom */
-  max-width: 400px; /* Adjust width as needed */
+  justify-content: space-between; 
+  max-width: 400px; 
 }
 
 .textInput {
-  margin-bottom: 16px; /* Space between input fields */
+  margin-bottom: 16px;
 }
 
 @media (max-width: 768px) {

@@ -1,31 +1,31 @@
 .container {
   width: 50%;
-  margin: 0 auto; /* Centers the container horizontally */
-  padding: 20px; /* Adds padding around the content */
+  margin: 0 auto; 
+  padding: 20px;
   text-align: left;
 }
 
 .form {
-  width: 100%; /* Ensure the form uses the full width of the container */
+  width: 100%;
 }
 
 .inputWrapper {
-  margin-bottom: 1rem; /* Adds spacing between form elements */
+  margin-bottom: 1rem; 
 }
 
 input,
 select,
 textarea {
-  width: 100%; /* Ensure form fields use the full width */
+  width: 100%; 
 }
 
 label {
-  display: block; /* Makes sure the label is on its own line */
-  margin-bottom: 0.5rem; /* Adds space between the label and input field */
+  display: block;
+  margin-bottom: 0.5rem; 
 }
 
 .buttons {
   display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
-  gap: 10px; /* Adds space between the buttons */
+  justify-content: flex-end; 
+  gap: 10px;
 }

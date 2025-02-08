@@ -24,6 +24,7 @@ const itemSchema = new Schema(
         "Outdoor Area",
         "Acts of Service",
         "Vehicles",
+        "Home Appliances",
       ],
       required: [true, "Category is required."],
     },

@@ -1,9 +1,9 @@
 .pageContainer {
-  text-align: center; /* Center the header */
-  margin: 0 auto; /* Centers the container horizontally */
+  text-align: center; 
+  margin: 0 auto; 
   padding: 20px;
 }
 
 .headerTitle {
-  margin-bottom: 1rem; /* Add margin below the header */
+  margin-bottom: 1rem; 
 }

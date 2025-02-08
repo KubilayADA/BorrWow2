@@ -3,23 +3,23 @@
 .searchForm {
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between input and button */
-  height: 36px; /* Match button height */
+  gap: 8px; 
+  height: 36px;
 }
 
 .searchInput {
   flex: 1;
   padding: 8px;
-  border: none; /* Remove default border */
+  border: none; 
   border-radius: 4px;
-  height: 100%; /* Match height of form */
-  box-shadow: 0 0 0 1px #ddd; /* Initial thin border simulation */
-  transition: box-shadow 0.3s ease; /* Smooth transition for box-shadow */
+  height: 100%; 
+  box-shadow: 0 0 0 1px #ddd; 
+  transition: box-shadow 0.3s ease; 
 }
 
 .searchInput:focus {
-  box-shadow: 0 0 0 1px #224eff; /* Thinner border effect on focus */
-  outline: none; /* Remove default outline on focus */
+  box-shadow: 0 0 0 1px #224eff; 
+  outline: none; 
 }
 
 .searchButton {
@@ -30,7 +30,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  height: 100%; /* Match height of form */
+  height: 100%; 
   font-weight: 500;
 }
 

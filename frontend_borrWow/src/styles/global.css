@@ -1,4 +1,4 @@
-/* Ensure html and body take up the full height of the viewport */
+
 html,
 body {
   height: 100%;
@@ -12,7 +12,7 @@ body {
   min-height: 100vh; /* Full viewport height */
 }
 
-/* Flex-grow to allow main content to take available space */
+
 main {
   flex: 1;
 }
