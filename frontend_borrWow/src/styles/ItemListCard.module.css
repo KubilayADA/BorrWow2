@@ -8,6 +8,7 @@
   max-width: 300px;
   margin: 16px;
   position: relative;
+  width: 100%;
 }
 
 .card:hover {
@@ -155,15 +156,18 @@
 
 @media (max-width: 768px) {
   .card {
-    max-width: 100%;
+    max-width: calc(50% - 32px);
+    margin: 8px;
   }
 }
 
+
 @media (max-width: 480px) {
   .image {
-    height: 150px;
+    height: 180px;
   }
   .card {
-    margin: 8px;
+    margin: 8px 0;
+    max-width: 100%;
   }
 }
