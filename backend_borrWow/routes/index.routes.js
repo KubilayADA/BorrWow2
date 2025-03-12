@@ -11,11 +11,5 @@ router.get("/", (req, res) => {
 router.use("/users", userRoutes);
 router.use("/items", itemRoutes);
 router.use("/borrowrequests", borrowRequestRoutes);
-router.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    timestamp: new Date().toISOString()
-  });
-});
 
 module.exports = router;
