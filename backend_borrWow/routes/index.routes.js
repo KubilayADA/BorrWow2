@@ -1,15 +1,23 @@
-const router = require("express").Router();
-const userRoutes = require("./user.routes");
-const itemRoutes = require("./item.routes");
-const borrowRequestRoutes = require("./borrowRequest.routes");
+const express = require("express");
+const app = express();
+const apiRouter = require("./routes/api.routes"); // Your existing API router
 
-// these are all the api routes e.g http://localhost:5005/api/items
-router.get("/", (req, res) => {
-  res.json("Hello from the /api route!");
+
+app.use(cors());
+app.use(express.json());
+
+
+app.get("/", (req, res) => {
+  res.json({ message: "Backend is running!" });
 });
 
-router.use("/users", userRoutes);
-router.use("/items", itemRoutes);
-router.use("/borrowrequests", borrowRequestRoutes);
 
-module.exports = router;
+app.use("/api", apiRouter);
+
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ message: "Internal server error" });
+});
+
+module.exports = app;
