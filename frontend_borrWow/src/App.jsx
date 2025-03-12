@@ -20,6 +20,7 @@ import BRequestsTOUserPage from "./pages/BRequestsTOUserPage";
 import ProfilePage from "./pages/ProfilePage";
 import EditBRequestForm from "./components/EditBRequestForm";
 import AboutPage from "./pages/AboutPage"; // Import the new AboutPage component
+import InviteFriends from "./pages/InviteFriends"; // Import the new InviteFriendsPage component
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/InviteFriends" element={<InviteFriends />} />
           <Route
             path="/userdash"
             element={

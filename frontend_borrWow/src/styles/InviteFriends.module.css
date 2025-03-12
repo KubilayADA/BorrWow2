@@ -1,0 +1,85 @@
+/* Styling for the InviteFriends page */
+.container {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 50px;
+  }
+  
+  .center {
+    text-align: center;
+    flex-direction: column;
+    
+  }
+  
+  .content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 50px;
+    box-shadow: 10 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #224eff;
+    margin-bottom: 20px;
+  }
+  
+  .rewardSection {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .rewardImage {
+    width: 80px; /* Cash image size */
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .rewardText {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    max-width: 500px;
+  }
+  
+  .instructionText {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #555;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .actionButton {
+    margin-top: 30px;
+  }
+  
+  .button {
+  color: #224eff;
+  background-color: #224eff;
+    color: white;
+    font-weight: thin;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  
+  .button:hover {
+    background-color: #1a3cb7;
+    
+  }
+  
+  .disclaimer {
+    font-size: 12px;
+    color: #777;
+    margin-top: 20px;
+  }
+  
