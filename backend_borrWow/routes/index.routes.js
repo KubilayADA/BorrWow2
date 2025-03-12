@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const apiRouter = require("./routes/api.routes"); // Your existing API router
+const itemRouter = require("./routes/item.routes"); // Your existing API router
 
 
 app.use(cors());
@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.use("/api", apiRouter);
+app.use("/items", itemRouter);
 
 
 app.use((err, req, res, next) => {
