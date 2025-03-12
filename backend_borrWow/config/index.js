@@ -1,37 +1,37 @@
-
 const express = require("express");
-
-
 const logger = require("morgan");
-
-
 const cookieParser = require("cookie-parser");
-
-
 const cors = require("cors");
 
-const FRONTEND_URL =
-process.env.ORIGIN ||
-"https://borrwow2-1-jqmk.onrender.com"; // Default to localhost for development
+const FRONTEND_URLS = [
+  "https://borrwow2-1-jqmk.onrender.com",
+  "http://localhost:5173",
+  "https://borrwow2-8w5m.onrender.com",
+  ...(process.env.ORIGIN ? process.env.ORIGIN.split(",") : []),
+].map(url => url.replace(/\/$/, ""));
 
-// Middleware configuration
 module.exports = (app) => {
-  
-  app.set("trust proxy", 1);
+  app.set("trust proxy", 2); // Trust Render proxies
 
+  app.options("*", cors()); // Preflight handling
 
   app.use(
     cors({
-      origin: FRONTEND_URL, // Allow your frontend origin
-      methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow these HTTP methods
-      credentials: true, // Include credentials (if needed)
+      origin: (origin, callback) => {
+        console.log("Received Origin:", origin);
+        const normalizedOrigin = origin?.replace(/\/$/, "") || "";
+        if (FRONTEND_URLS.includes(normalizedOrigin)) {
+          callback(null, origin); // Reflect exact origin
+        } else {
+          callback(new Error("CORS blocked"));
+        }
+      },
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      credentials: true,
     })
   );
 
- 
   app.use(logger("dev"));
-
-
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
