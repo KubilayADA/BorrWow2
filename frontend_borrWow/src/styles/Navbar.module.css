@@ -34,10 +34,12 @@ main {
 .leftSideLinks {
   display: flex;
   gap: 20px;
+  justify-content: flex-start;
+  flex: 1;
 }
 
 .aboutLink {
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .borrowLink,
@@ -66,10 +68,12 @@ main {
 .buttonContainer {
   display: flex;
   gap: 10px;
+  ;
 }
 
 .button {
   margin: 0;
+  ;
 }
 
 .userInfo {
@@ -129,6 +133,7 @@ main {
   align-items: center;
   gap: 20px;
   flex: 1;
+  justify-content: flex-start;
 }
 
 .rightSection {
