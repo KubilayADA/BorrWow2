@@ -1,12 +1,16 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/SearchBar.module.css';
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isMobileSearchActive, setIsMobileSearchActive] = useState(false);
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  
+  
+  
 
-  // Debounce function to delay the search
   const debounce = (func, delay) => {
     let timer;
     return function (...args) {
@@ -22,14 +26,10 @@ const SearchBar = () => {
   const handleSearch = (query) => {
     if (query) {
       navigate(`/search?query=${encodeURIComponent(query.toLowerCase())}`);
-    } else {
-      navigate(-1); // Navigate back if no search term
     }
   };
 
-  // Debounced version of handleSearch
   const debouncedSearch = useCallback(debounce(handleSearch, 300), []);
-
 
   const handleInputChange = (event) => {
     const trimmedSearchTerm = event.target.value.trim();
@@ -37,19 +37,47 @@ const SearchBar = () => {
     debouncedSearch(trimmedSearchTerm);
   };
 
+  const toggleSearch = () => {
+    if (isMobile) {
+      setIsMobileSearchActive(!isMobileSearchActive);
+      if (!isMobileSearchActive) setSearchTerm('');
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <form className={styles.searchForm}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleInputChange}
-        className={styles.searchInput} 
-      />
-      <button type="submit" className={styles.searchButton} onClick={(e) => e.preventDefault()}>
-        Search
-      </button> {}
-    </form>
+    <div className={`${styles.searchContainer} ${isMobileSearchActive ? styles.active : ''}`}>
+      <form className={styles.searchForm}>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={handleInputChange}
+          className={`${styles.searchInput} ${isMobileSearchActive ? styles.active : ''}`}
+        />
+        <button 
+          type="button" 
+          className={`${styles.searchButton} ${isMobile ? styles.mobileIcon : ''}`}
+          onClick={toggleSearch}
+          aria-label="Search"
+        >
+          {isMobileSearchActive ? (
+            <span className={styles.closeIcon}>×</span>
+          ) : (
+            <span className={styles.searchIcon}>🔍</span>
+          )}
+        </button>
+      </form>
+    </div>
   );
 };
 

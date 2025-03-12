@@ -1,39 +1,135 @@
 /* SearchBar.module.css */
+.searchContainer {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
 
 .searchForm {
   display: flex;
   align-items: center;
-  gap: 8px; 
+  gap: 8px;
   height: 36px;
+  width: 100%;
+  position: relative;
 }
 
 .searchInput {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 120px;
   padding: 8px;
-  border: none; 
+  border: none;
   border-radius: 4px;
-  height: 100%; 
-  box-shadow: 0 0 0 1px #ddd; 
-  transition: box-shadow 0.3s ease; 
+  height: 100%;
+  box-shadow: 0 0 0 1px #ddd;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  box-sizing: border-box;
+  opacity: 1;
+  width: 100%;
 }
 
 .searchInput:focus {
-  box-shadow: 0 0 0 1px #224eff; 
-  outline: none; 
+  box-shadow: 0 0 0 1px #224eff;
+  outline: none;
 }
 
 .searchButton {
-  padding: 6px 16px;
-  font-size: 1rem;
+  flex: 0 0 auto;
+  padding: 6px 12px;
+  font-size: 0.9rem;
   background-color: #224eff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  height: 100%; 
+  height: 100%;
   font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.3s ease;
 }
 
 .searchButton:hover {
   background-color: #1f46e6;
+}
+
+/* Mobile styles for small screens (phones) */
+@media (max-width: 480px) {
+  .searchContainer {
+    max-width: 100%;
+    position: static;
+    padding: 0 8px;
+  }
+  .searchForm {
+    position: relative;
+    height: 40px;
+    
+  }
+
+  .searchInput {
+    position: absolute;
+    right: 40px;
+    width: calc(100% - 48px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+
+  .searchInput.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .searchButton.mobileIcon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    margin-left: auto;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+  }
+
+  .searchButton.mobileIcon:hover {
+    background: rgba(0,0,0,0.05);
+  }
+
+  .searchIcon, .closeIcon {
+    font-size: 1.2rem;
+    display: block;
+    line-height: 36px;
+  }
+
+  .closeIcon {
+    color: #224eff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .searchButton.mobileIcon .searchIcon {
+    color: #224eff;
+  }
+}
+
+/* Tablet and desktop styles */
+@media (min-width: 481px) {
+  .mobileIcon {
+    display: none;
+  }
+  
+  .searchForm {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .searchInput {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    position: static !important;
+    width: 100% !important;
+  }
 }
