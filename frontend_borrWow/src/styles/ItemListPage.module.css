@@ -1,4 +1,4 @@
-/* ItemListPage.module.css */
+/*itemListPage.module.css*/
 
 .page {
   padding: 40px;
@@ -36,11 +36,13 @@
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /*to allow more cards by reducing the minimum card size.*/
   gap: 20px; 
   justify-content: center; 
   padding: 0 20px;
+  max-width: 1400px;
+  margin: 0 auto;;
 }
 
 /* Responsive styles */
@@ -80,7 +82,7 @@
 
 @media (max-width: 480px) {
   .categoryLinks button {
-    font-size: 0.9em; /* Adjust font size */
-    padding: 8px 16px; /* Adjust padding */
+    font-size: 0.9em; 
+    padding: 8px 16px; 
   }
 }
