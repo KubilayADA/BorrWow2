@@ -53,9 +53,13 @@ function Navbar() {
         <Link to="/about" className={styles.aboutLink}>
           ABOUT
         </Link>
+        <Link to="/invitefriends" className={styles.inviteLink}>
+          INVITE
+        </Link>
         <Link to="/items" className={styles.borrowLink}>
           BORROW
         </Link>
+      
         {isAuthenticated && (
           <>
             <Link to="/favorites" className={styles.favoritesLink}>
