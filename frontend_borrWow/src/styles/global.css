@@ -16,3 +16,18 @@ body {
 main {
   flex: 1;
 }
+/* Prevent any element from blocking interactions */
+.disable-interactions {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Ensure loading overlays properly clear */
+.mantine-LoadingOverlay-root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}

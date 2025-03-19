@@ -13,6 +13,8 @@ function Navbar() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchUser = async () => {
       try {
         const response = await fetch(
@@ -21,6 +23,7 @@ function Navbar() {
             headers: {
               Authorization: `Bearer ${token}`,
             },
+            signal: controller.signal,
           }
         );
         if (!response.ok) {
@@ -29,13 +32,17 @@ function Navbar() {
         const data = await response.json();
         setUser(data);
       } catch (error) {
-        console.error("Failed to fetch user data:", error);
+        if (error.name !== "AbortError") {
+          console.error("Failed to fetch user data:", error);
+        }
       }
     };
 
     if (isAuthenticated && userId) {
       fetchUser();
     }
+
+    return () => controller.abort();
   }, [isAuthenticated, userId, token]);
 
   return (

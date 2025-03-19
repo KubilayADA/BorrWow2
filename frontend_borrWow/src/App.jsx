@@ -21,10 +21,13 @@ import ProfilePage from "./pages/ProfilePage";
 import EditBRequestForm from "./components/EditBRequestForm";
 import AboutPage from "./pages/AboutPage"; // Import the new AboutPage component
 import InviteFriends from "./pages/InviteFriends"; // Import the new InviteFriendsPage component
+import ErrorBoundary from "./components/ErrorBoundary";
+
 
 function App() {
   return (
     <>
+        <ErrorBoundary>
       <Navbar />
       <main>
         <Routes>
@@ -113,6 +116,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      </ErrorBoundary>
     </>
   );
 }
