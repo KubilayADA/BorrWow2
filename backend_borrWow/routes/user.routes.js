@@ -97,4 +97,31 @@ router.delete("/:id", isAuthenticated, async (req, res) => {
   }
 });
 
+router.post("/:userId/redeem", isAuthenticated, async (req, res) => {
+  try {
+    const { itemId } = req.body;
+    const user = await User.findById(req.params.userId);
+    
+    // Implement your redemption logic
+    // Example:
+    const item = items.find(i => i.id === itemId);
+    if (!item) return res.status(400).json({ error: "Invalid item" });
+    
+    if (user.trustpoints < item.cost) {
+      return res.status(400).json({ error: "Not enough points" });
+    }
+
+    user.trustpoints -= item.cost;
+    await user.save();
+    
+    res.json({ 
+      success: true,
+      newBalance: user.trustpoints,
+      redeemedItem: item
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;

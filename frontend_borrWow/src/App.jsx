@@ -19,9 +19,12 @@ import EditItemPage from "./pages/EditItemPage";
 import BRequestsTOUserPage from "./pages/BRequestsTOUserPage";
 import ProfilePage from "./pages/ProfilePage";
 import EditBRequestForm from "./components/EditBRequestForm";
-import AboutPage from "./pages/AboutPage"; // Import the new AboutPage component
-import InviteFriends from "./pages/InviteFriends"; // Import the new InviteFriendsPage component
+import AboutPage from "./pages/AboutPage"; 
+import InviteFriends from "./pages/InviteFriends"; 
 import ErrorBoundary from "./components/ErrorBoundary";
+import RedeemPage from "./pages/RedeemPage"; 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
@@ -35,6 +38,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/InviteFriends" element={<InviteFriends />} />
+          <Route path="/redeem" element={<RedeemPage />} />
           <Route
             path="/userdash"
             element={
