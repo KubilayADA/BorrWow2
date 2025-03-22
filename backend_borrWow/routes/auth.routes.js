@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 //apply bonus
 const applyReferralBonus = async (referralCode, newUserId, session) => {
   const session = await mongoose.startSession();
-  session.startTransaction();
+  
   
   try {
   // find inviter by the referal code
