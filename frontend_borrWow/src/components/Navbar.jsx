@@ -67,8 +67,8 @@ function Navbar() {
           BORROW
         </Link>
        {isAuthenticated && user && (
-  <Link to="/redeem" className={styles.pointsLink}>
-    POINTS : {user.trustpoints || 0}
+        <Link to="/redeem" className={styles.pointsLink}>
+       POINTS : {user.trustpoints || 0}
   </Link>
 )}
       
