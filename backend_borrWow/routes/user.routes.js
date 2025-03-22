@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User.model.js");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 
+
 //I generate the unique code for the use 
 const generateUniqueCode = async () => {
   let code;
@@ -15,6 +16,7 @@ const generateUniqueCode = async () => {
   }
   return code;
 };
+
 // Get the code for the user
 router.get("/:userId/invite-code", isAuthenticated, async (req, res) => {
   try {

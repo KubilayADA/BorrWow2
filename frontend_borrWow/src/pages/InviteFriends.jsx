@@ -27,11 +27,11 @@ function InviteFriends() {
           }
 
           if (!response.ok) {
-            const errorData = await response.json()
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Failed to fetch invitation code");
           }
-          if (!response.ok) throw new Error("Failed to fetch invitation code");
           const data = await response.json();
-          setInvitationCode(data.code);
+        setInvitationCode(data.code);
         } catch (err) {
           setError(err.message);
         } finally {
