@@ -96,15 +96,7 @@ function Navbar() {
             >
               Log In
             </Button>
-            <Button
-              component={Link}
-              to="/points"
-              variant="filled"
-              color="#224eff"
-              className={styles.button}
-            >
-              POINTS
-            </Button>
+            
             <Button
               component={Link}
               to="/signup"

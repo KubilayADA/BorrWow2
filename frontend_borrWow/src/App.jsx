@@ -30,7 +30,9 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <>
+
         <ErrorBoundary>
+          
       <Navbar />
       <main>
         <Routes>
@@ -120,7 +122,10 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      
+
       </ErrorBoundary>
+      
     </>
   );
 }
