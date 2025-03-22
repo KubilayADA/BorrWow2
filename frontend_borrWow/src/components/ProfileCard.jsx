@@ -23,7 +23,7 @@ function ProfileCard({ user }) {
             src={user.imageUrl || placeholderImage}
             alt={user.username}
             radius="md"
-            className={styles.profileImage} // Apply CSS class
+            className={styles.profileImage} 
           />
         </div>
         <div className={styles.details}>

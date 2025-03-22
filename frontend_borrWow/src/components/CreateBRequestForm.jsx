@@ -10,7 +10,7 @@ import styles from "../styles/AddItemForm.module.css";
 function CreateBRequestForm() {
   const { token, userId } = useContext(SessionContext); // Get userId from context
   const navigate = useNavigate();
-  const { id } = useParams(); // Assuming the item ID is passed as a URL parameter
+  const { id } = useParams(); 
 
   const form = useForm({
     initialValues: {

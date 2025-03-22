@@ -59,7 +59,7 @@ function AddItemForm() {
     }
   };
 
-  // Berlin districts in alphabetical order
+  // Berlin
   const berlinDistricts = [
     "Charlottenburg",
     "Friedrichshain",
