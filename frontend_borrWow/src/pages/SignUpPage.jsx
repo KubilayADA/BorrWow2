@@ -65,7 +65,7 @@ function SignUpPage() {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-          <TestInput
+          <TextInput
             label = "Referal Code (Optional)"
             placeholder = "Enter a valid referal code"
             value ={referralCode}
