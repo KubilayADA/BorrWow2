@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 const secret = require("../config/secretGenerator");
+const mongoose = require("mongoose");
 
 
 // Health Check Route
@@ -54,7 +55,7 @@ const applyReferralBonus = async (referralCode, newUserId) => {
 router.post("/signup", async (req, res, next) => {
   const {password, referralCode, ...userData} = req.body;
   const salt = bcrypt.genSaltSync(13);
-  const passwordHash = bcrypt.hashSync(req.body.password, salt);
+  const passwordHash = bcrypt.hashSync(password, salt);
 
   const session = await mongoose.startSession();
   session.startTransaction();

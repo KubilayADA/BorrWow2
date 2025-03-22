@@ -39,6 +39,7 @@ function SignUpPage() {
             referralCode,}),
         }
       );
+      const data = await response.json();
 
       if (!response.ok) {
         throw new Error("Sign up failed.");
@@ -66,7 +67,7 @@ function SignUpPage() {
             required
           />
           <TextInput
-            label = "Referal Code (Optional)"
+            label = "Referral Code (Optional)"
             placeholder = "Enter a valid referal code"
             value ={referralCode}
             onChange={(e) => setReferralCode(e.target.value)}
