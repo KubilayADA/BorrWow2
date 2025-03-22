@@ -29,6 +29,11 @@ const userSchema = new Schema(
     imageUrl: {
       type: String,
     },
+    inviteCode: {
+      type: String,
+      unique: true,
+      sparse: true
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

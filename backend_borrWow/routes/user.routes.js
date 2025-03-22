@@ -4,14 +4,43 @@ const User = require("../models/User.model.js");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 
 
-router.get("/", async (req, res) => {
+const generateUniqueCode = async () => {
+  let code;
+  let isUnique = false;
+  
+  while (!isUnique) {
+    code = Math.random().toString(36).substr(2, 8).toUpperCase();
+    const existingUser = await User.findOne({ inviteCode: code });
+    if (!existingUser) isUnique = true;
+  }
+  
+  return code;
+};
+
+
+router.get("/:userId/invite-code", isAuthenticated, async (req, res) => {
   try {
-    const users = await User.find();
-    res.json(users);
+    
+    const user = await User.findById(req.params.userId);
+    if (!user) return res.status(404).json({ error: "User not found" });
+    
+    if (!user.inviteCode) {
+      user.inviteCode = await generateUniqueCode(); 
+      await user.save();
+    }
+    
+    res.json({ 
+      code: user.inviteCode,
+      referralLink: `${process.env.FRONTEND_URL}/signup?ref=${user.inviteCode}`
+    });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error("Invite code error:", error);
+    res.status(500).json({ error: "Failed to generate invitation code" });
   }
 });
+
+module.exports = router;
+
 
 
 
@@ -24,7 +53,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Edit user by ID (authenticated route)
+
 router.put("/:id", isAuthenticated, async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,4 +101,3 @@ router.delete("/:id", isAuthenticated, async (req, res) => {
   }
 });
 
-module.exports = router;
