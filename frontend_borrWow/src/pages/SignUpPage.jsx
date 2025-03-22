@@ -70,7 +70,7 @@ function SignUpPage() {
             placeholder = "Enter a valid referal code"
             value ={referralCode}
             onChange={(e) => setReferralCode(e.target.value)}
-            mt="md"
+            mt="md" // mt is md means margin top is medium
           />
           <TextInput
             label="Email"
