@@ -29,11 +29,22 @@ const userSchema = new Schema(
     imageUrl: {
       type: String,
     },
+    referredBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    referredUsers: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     
     inviteCode: {
       type: String,
       unique: true,
-      sparse: true
+      sparse: true,
+      index : true,
     },
   },
   {

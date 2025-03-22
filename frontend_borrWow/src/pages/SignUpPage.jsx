@@ -39,12 +39,17 @@ function SignUpPage() {
             referralCode,}),
         }
       );
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error("Sign up failed.");
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        throw new Error(`Server response invalid (${response.status})`);
       }
-
+  
+      if (!response.ok) {
+        throw new Error(data?.error || "Signup failed");
+      }
+  
       navigate("/login");
     } catch (err) {
       setError(err.message);

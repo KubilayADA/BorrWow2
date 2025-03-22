@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 //apply bonus
-const applyReferralBonus = async (referralCode, newUserId) => {
+const applyReferralBonus = async (referralCode, newUserId, session) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   
@@ -23,84 +23,90 @@ const applyReferralBonus = async (referralCode, newUserId) => {
     const referrer = await User.findOne({ inviteCode: referralCode }).session(session);
     
     if (!referrer) {
-      throw new Error("Invalid referral code");
+      throw new Error("INVALID_REFERRAL");
     }
 
-    // give the trustpoint the inviter
-    referrer.trustpoints += 30;
-    referrer.referredUsers.push(newUserId);
-    await referrer.save({ session });
+      // give trustpoint to  referrer
+      await User.findByIdAndUpdate(
+        referrer._id,
+        {
+          $inc: { trustpoints: 30 },
+          $push: { referredUsers: newUserId }
+        },
+        { session }
+      );
+  
+      // give trustpoint to new user
+      await User.findByIdAndUpdate(
+        newUserId,
+        {
+          $inc: { trustpoints: 30 },
+          referredBy: referrer._id
+        },
+        { session }
+      );
+    } catch (error) {
+      throw error;
+    }
+  };
 
-    // give the trustpoint to the new user
-    await User.findByIdAndUpdate(
-      newUserId,
-      { 
-        referredBy: referrer._id,
-        $inc: { trustpoints: 30 } 
-      },
-      { session }
-    );
+// POST Signup
 
-    await session.commitTransaction();
-    return true;
+router.post("/signup", async (req, res, next) => {
+  const { password, referralCode, ...userData } = req.body;
+  const session = await mongoose.startSession();
+  
+  try {
+    await session.withTransaction(async () => {
+      const salt = bcrypt.genSaltSync(13);
+      const passwordHash = bcrypt.hashSync(password, salt);
+
+      // Validate referral code FIRST
+      let referrer = null;
+      if (referralCode) {
+        referrer = await User.findOne({ inviteCode: referralCode }).session(session);
+        if (!referrer) {
+          throw new Error("INVALID_REFERRAL");
+        }
+      }
+
+      // Create user
+      const [newUser] = await User.create([{
+        ...userData,
+        passwordHash,
+        referredBy: referrer?._id || null
+      }], { session });
+
+      // Apply referral bonus if valid
+      if (referrer) {
+        await applyReferralBonus(referralCode, newUser._id, session);
+      }
+
+      return newUser;
+    });
+
+    res.status(201).json({ success: true });
   } catch (error) {
-    await session.abortTransaction();
-    throw error;
+    const errorMap = {
+      INVALID_REFERRAL: { status: 400, message: "Invalid referral code" },
+      "11000": { 
+        status: 400,
+        message: `${Object.keys(error.keyPattern)?.[0] || 'Field'} already exists`
+      }
+    };
+
+    const matchedError = errorMap[error.message] || errorMap[error.code];
+    if (matchedError) {
+      return res.status(matchedError.status).json({ error: matchedError.message });
+    }
+
+    console.error("Signup error:", error);
+    res.status(500).json({ error: "Internal server error" });
   } finally {
     session.endSession();
   }
-};
-
-// POST Signup
-router.post("/signup", async (req, res, next) => {
-  const {password, referralCode, ...userData} = req.body;
-  const salt = bcrypt.genSaltSync(13);
-  const passwordHash = bcrypt.hashSync(password, salt);
-
-  const session = await mongoose.startSession();
-  session.startTransaction();
-
-  try {
-    let referrer = null;
-    
-    // create new user
-    if (referralCode) {
-      referrer = await User.findOne({ inviteCode: referralCode }).session(session);
-      if (!referrer) {
-        throw new Error("Invalid referral code");
-      }
-    }
-    const newUser = await User.create([{ 
-      ...userData, 
-      passwordHash,
-      referredBy: referrer?._id || null
-    }], { session });
-
-    // apply bonus if the user has valid code
-    if (referralCode) {
-      await applyReferralBonus(referralCode, newUser[0]._id, session);
-    }
-    await session.commitTransaction();
-    res.status(201).json(newUser[0]);
-  } catch (error) {
-    await session.abortTransaction();
-    
-    // Check if the error is a duplicate key error
-    if (error.code === 11000) {
-      // Attempt to extract the field name from error.keyPattern
-      const field = error.keyPattern ? Object.keys(error.keyPattern)[0] : 'Unknown field';
-      res.status(400).json({ 
-        message: `${field.charAt(0).toUpperCase() + field.slice(1)} already exists` 
-      });
-    } else if (error.message === "Invalid referral code") {
-      res.status(400).json({ message: "Invalid referral code" });
-    } else {
-      next(error);
-    }
-  } finally {
-    session.endSession();
-  }  
 });
+
 // POST Login
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
