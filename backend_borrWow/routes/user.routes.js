@@ -3,6 +3,19 @@ const router = express.Router();
 const User = require("../models/User.model.js");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 
+
+const generateUniqueCode = async () => {
+  let code;
+  let isUnique = false;
+  
+  while (!isUnique) {
+    code = Math.random().toString(36).substring(2, 10).toUpperCase();
+    const existingUser = await User.findOne({ inviteCode: code });
+    if (!existingUser) isUnique = true;
+  }
+  return code;
+};
+
 router.get("/:userId/invite-code", isAuthenticated, async (req, res) => {
   try {
     
@@ -23,26 +36,6 @@ router.get("/:userId/invite-code", isAuthenticated, async (req, res) => {
     res.status(500).json({ error: "Failed to generate invitation code" });
   }
 });
-
-
-
-const generateUniqueCode = async () => {
-  let code;
-  let isUnique = false;
-  
-  while (!isUnique) {
-    code = Math.random().toString(36).substr(2, 8).toUpperCase();
-    const existingUser = await User.findOne({ inviteCode: code });
-    if (!existingUser) isUnique = true;
-  }
-  
-  return code;
-};
-
-
-
-
-
 
 
 router.get("/:id", async (req, res) => {
@@ -101,7 +94,5 @@ router.delete("/:id", isAuthenticated, async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
-
-
 
 module.exports = router;
