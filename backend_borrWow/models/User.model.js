@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 /* const bcrypt = require("bcryptjs");
 const saltRounds = 10; */
 
-// TODO: Please make sure you edit the Book model to whatever makes sense in this case
+// TODO: Please make sure you edit the Book model to whatever makes sense in this case, and this file to the correct model name.
 const userSchema = new Schema(
   {
     username: {
@@ -29,6 +29,7 @@ const userSchema = new Schema(
     imageUrl: {
       type: String,
     },
+    
     inviteCode: {
       type: String,
       unique: true,
