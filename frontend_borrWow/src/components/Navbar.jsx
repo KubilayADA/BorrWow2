@@ -6,8 +6,11 @@ import handshakeBlue from "../assets/images/handshake_blue.png";
 import handshakeBlack from "../assets/images/handshake_black.png";
 import { SessionContext } from "../contexts/SessionContext";
 import SearchBar from "./SearchBar";
+import { Burger } from '@mantine/core'
 
 function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const { isAuthenticated, userId, token, handleLogout } =
     useContext(SessionContext);
   const [user, setUser] = useState(null);
@@ -46,7 +49,12 @@ function Navbar() {
   }, [isAuthenticated, userId, token]);
 
   return (
-    <div className={styles.navbar}>
+          <div className={styles.navbar}>
+            <Burger
+        opened={isMenuOpen} 
+        onClick={() => setIsMenuOpen((o) => !o)}
+        className={styles.burger}
+      />
       <Link to="/" className={styles.navLink}>
         <img
           src={handshakeBlue}
@@ -55,7 +63,27 @@ function Navbar() {
           onMouseEnter={(e) => (e.currentTarget.src = handshakeBlack)}
           onMouseLeave={(e) => (e.currentTarget.src = handshakeBlue)}
         />
+        
       </Link>
+      {isMenuOpen && (
+  <div className={styles.mobileMenu}>
+    <Link to="/about" className={styles.mobileLink}>ABOUT</Link>
+    <Link to="/invitefriends" className={styles.mobileLink}>INVITE</Link>
+    <Link to="/items" className={styles.mobileLink}>BORROW</Link>
+    {isAuthenticated && user && (
+      <Link to="/redeem" className={styles.mobileLink}>
+        POINTS: {user.trustpoints || 0}
+      </Link>
+    )}
+    {isAuthenticated && (
+      <>
+        <Link to="/favorites" className={styles.mobileLink}>FAVORITES</Link>
+        <Link to="/newitem" className={styles.mobileLink}>SHARE</Link>
+      </>
+    )}
+  </div>
+)}
+
       <div className={styles.leftSideLinks}>
         <Link to="/about" className={styles.aboutLink}>
           ABOUT
