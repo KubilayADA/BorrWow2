@@ -60,10 +60,12 @@ router.post("/signup", async (req, res, next) => {
   const session = await mongoose.startSession();
   session.startTransaction();
 
- try {
-    // Create new user
+  try {
+    let referrer = null;
+    
+    // create new user
     if (referralCode) {
-      const referrer = await User.findOne({ inviteCode: referralCode }).session(session);
+      referrer = await User.findOne({ inviteCode: referralCode }).session(session);
       if (!referrer) {
         throw new Error("Invalid referral code");
       }
@@ -71,7 +73,7 @@ router.post("/signup", async (req, res, next) => {
     const newUser = await User.create([{ 
       ...userData, 
       passwordHash,
-      referredBy: null 
+      referredBy: referrer?._id || null
     }], { session });
 
     // apply bonus if the user has valid code
