@@ -85,10 +85,12 @@ router.post("/signup", async (req, res, next) => {
   } catch (error) {
     await session.abortTransaction();
     
+    // Check if the error is a duplicate key error
     if (error.code === 11000) {
-      const field = Object.keys(error.keyPattern)[0];
+      // Attempt to extract the field name from error.keyPattern
+      const field = error.keyPattern ? Object.keys(error.keyPattern)[0] : 'Unknown field';
       res.status(400).json({ 
-        message: `${field.charAt(0).toUpperCase() + field.slice(1)} already exists` // check if capitalizeFirstLetter is needed
+        message: `${field.charAt(0).toUpperCase() + field.slice(1)} already exists` 
       });
     } else if (error.message === "Invalid referral code") {
       res.status(400).json({ message: "Invalid referral code" });
@@ -97,7 +99,7 @@ router.post("/signup", async (req, res, next) => {
     }
   } finally {
     session.endSession();
-  }
+  }  
 });
 // POST Login
 router.post("/login", async (req, res, next) => {
