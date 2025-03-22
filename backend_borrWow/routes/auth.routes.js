@@ -5,21 +5,20 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { isAuthenticated } = require("../middlewares/auth.middleware");
 const secret = require("../config/secretGenerator");
-// All routes start with /auth
-// Health Check Route
 
+
+// Health Check Route
 router.get("/", (req, res) => {
   res.json("All good in auth");
 });
 
 //apply bonus
-
 const applyReferralBonus = async (referralCode, newUserId) => {
   const session = await mongoose.startSession();
   session.startTransaction();
   
   try {
-    // find inviter by the referal code
+  // find inviter by the referal code
     const referrer = await User.findOne({ inviteCode: referralCode }).session(session);
     
     if (!referrer) {
@@ -50,6 +49,7 @@ const applyReferralBonus = async (referralCode, newUserId) => {
     session.endSession();
   }
 };
+
 // POST Signup
 router.post("/signup", async (req, res, next) => {
   const {password, referralCode, ...userData} = req.body;
@@ -61,37 +61,34 @@ router.post("/signup", async (req, res, next) => {
 
  try {
     // Create new user
+    if (referralCode) {
+      const referrer = await User.findOne({ inviteCode: referralCode }).session(session);
+      if (!referrer) {
+        throw new Error("Invalid referral code");
+      }
+    }
     const newUser = await User.create([{ 
       ...userData, 
       passwordHash,
       referredBy: null 
     }], { session });
 
-    // check if the user has a referral code
+    // apply bonus if the user has valid code
     if (referralCode) {
-      try {
-        await applyReferralBonus(referralCode, newUser[0]._id, session);
-      } catch (referralError) {
-        // referral error without blocking registration
-        console.error("Referral error:", referralError.message);
-      }
+      await applyReferralBonus(referralCode, newUser[0]._id, session);
     }
-
     await session.commitTransaction();
-    res.status(201).json({
-      _id: newUser[0]._id,
-      username: newUser[0].username,
-      email: newUser[0].email,
-      trustpoints: newUser[0].trustpoints
-    });
+    res.status(201).json(newUser[0]);
   } catch (error) {
     await session.abortTransaction();
     
     if (error.code === 11000) {
       const field = Object.keys(error.keyPattern)[0];
       res.status(400).json({ 
-        message: `${field.charAt(0).toUpperCase() + field.slice(1)} already exists`
+        message: `${field.charAt(0).toUpperCase() + field.slice(1)} already exists` // check if capitalizeFirstLetter is needed
       });
+    } else if (error.message === "Invalid referral code") {
+      res.status(400).json({ message: "Invalid referral code" });
     } else {
       next(error);
     }
