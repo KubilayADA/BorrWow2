@@ -52,18 +52,51 @@ const applyReferralBonus = async (referralCode, newUserId) => {
 };
 // POST Signup
 router.post("/signup", async (req, res, next) => {
+  const {password, referralCode, ...userData} = req.body;
   const salt = bcrypt.genSaltSync(13);
   const passwordHash = bcrypt.hashSync(req.body.password, salt);
-  try {
-    const newUser = await User.create({ ...req.body, passwordHash });
-    res.status(201).json(newUser);
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+ try {
+    // Create new user
+    const newUser = await User.create([{ 
+      ...userData, 
+      passwordHash,
+      referredBy: null 
+    }], { session });
+
+    // check if the user has a referral code
+    if (referralCode) {
+      try {
+        await applyReferralBonus(referralCode, newUser[0]._id, session);
+      } catch (referralError) {
+        // referral error without blocking registration
+        console.error("Referral error:", referralError.message);
+      }
+    }
+
+    await session.commitTransaction();
+    res.status(201).json({
+      _id: newUser[0]._id,
+      username: newUser[0].username,
+      email: newUser[0].email,
+      trustpoints: newUser[0].trustpoints
+    });
   } catch (error) {
+    await session.abortTransaction();
+    
     if (error.code === 11000) {
-      console.log("duplicate");
-      res.status(400).json({ message: "Duplicate username" });
+      const field = Object.keys(error.keyPattern)[0];
+      res.status(400).json({ 
+        message: `${field.charAt(0).toUpperCase() + field.slice(1)} already exists`
+      });
     } else {
       next(error);
     }
+  } finally {
+    session.endSession();
   }
 });
 // POST Login
@@ -88,7 +121,7 @@ router.post("/login", async (req, res, next) => {
     next(error);
   }
 });
-//Get verify
+
 router.get("/verify", isAuthenticated, (req, res) => {
   res.json({ userId: req.tokenPayload.userId, message: "Token valid" });
 });
