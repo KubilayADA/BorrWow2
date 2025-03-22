@@ -66,6 +66,9 @@ function Navbar() {
         <Link to="/items" className={styles.borrowLink}>
           BORROW
         </Link>
+        <Link to="/redeem" className={styles.pointsLink}>
+        BRRWPoints : {user?.trustpoints || 0} 
+          </Link>
       
         {isAuthenticated && (
           <>
@@ -92,6 +95,15 @@ function Navbar() {
               className={styles.button}
             >
               Log In
+            </Button>
+            <Button
+              component={Link}
+              to="/points"
+              variant="filled"
+              color="#224eff"
+              className={styles.button}
+            >
+              POINTS
             </Button>
             <Button
               component={Link}

@@ -42,6 +42,7 @@ main {
   margin-left: 0px;
 }
 
+.pointsLink,
 .inviteLink,
 .borrowLink,
 .favoritesLink,
@@ -53,6 +54,7 @@ main {
   font-weight: bold;
 }
 
+.pointsLink:hover,
 .borrowLink:hover,
 .favoritesLink:hover,
 .shareLink:hover,
