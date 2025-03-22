@@ -74,20 +74,23 @@ function InviteFriends() {
               ) : (
                 <div className={styles.codeSection}>
                   <Tooltip label="Click to copy" withArrow>
-                    <CopyButton value={invitationCode}>
-                      {({ copied, copy }) => (
-                        <Button 
-                          onClick={() => {
-                            copy();
-                            handleCopy();
-                          }}
-                          variant="outline"
-                          className={styles.codeButton}
-                        >
-                          {copied ? "Copied!" : invitationCode}
-                        </Button>
-                      )}
-                    </CopyButton>
+                  <CopyButton value={invitationCode}>
+                {({ copied, copy }) => (
+                  <Tooltip label="Click to copy" withArrow>
+                    <Button 
+                      onClick={() => {
+                        copy();
+                        handleCopy();
+                      }}
+                      variant="outline"
+                      className={styles.codeButton}
+                    >
+                      {copied ? "Copied!" : invitationCode}
+                    </Button>
+                  </Tooltip>
+                )}
+              </CopyButton>
+                    
                   </Tooltip>
                   <Text align="center" className={styles.referralLink}>
                     Or share this link: {window.location.origin}/signup?ref={invitationCode}
