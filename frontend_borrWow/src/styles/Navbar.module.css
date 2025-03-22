@@ -56,7 +56,8 @@ main {
 .borrowLink:hover,
 .favoritesLink:hover,
 .shareLink:hover,
-.aboutLink:hover {
+.aboutLink:hover,
+.inviteLink:hover {
   color: black;
 }
 
