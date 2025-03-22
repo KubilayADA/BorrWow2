@@ -14,7 +14,7 @@
 
 .burger {
   display: none;
-  order: 1;
+  order: 0;
 }
 .mobileMenu {
   position: fixed;
@@ -208,7 +208,7 @@ main {
   }
 
   .searchContainer {
-    order: 0;
+    order: 1;
     flex:1;
     min-width: auto;
     margin: 0;
