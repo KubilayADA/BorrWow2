@@ -7,9 +7,49 @@ const { isAuthenticated } = require("../middlewares/auth.middleware");
 const secret = require("../config/secretGenerator");
 // All routes start with /auth
 // Health Check Route
+
 router.get("/", (req, res) => {
   res.json("All good in auth");
 });
+
+//apply bonus
+
+const applyReferralBonus = async (referralCode, newUserId) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  
+  try {
+    // find inviter by the referal code
+    const referrer = await User.findOne({ inviteCode: referralCode }).session(session);
+    
+    if (!referrer) {
+      throw new Error("Invalid referral code");
+    }
+
+    // give the trustpoint the inviter
+    referrer.trustpoints += 30;
+    referrer.referredUsers.push(newUserId);
+    await referrer.save({ session });
+
+    // give the trustpoint to the new user
+    await User.findByIdAndUpdate(
+      newUserId,
+      { 
+        referredBy: referrer._id,
+        $inc: { trustpoints: 30 } 
+      },
+      { session }
+    );
+
+    await session.commitTransaction();
+    return true;
+  } catch (error) {
+    await session.abortTransaction();
+    throw error;
+  } finally {
+    session.endSession();
+  }
+};
 // POST Signup
 router.post("/signup", async (req, res, next) => {
   const salt = bcrypt.genSaltSync(13);

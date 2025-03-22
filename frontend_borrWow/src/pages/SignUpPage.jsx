@@ -14,6 +14,7 @@ function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [referralCode, setReferralCode] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -31,7 +32,11 @@ function SignUpPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, email, password }),
+          body: JSON.stringify({ 
+            username,
+            email,
+            password,
+            referralCode,}),
         }
       );
 
@@ -59,6 +64,13 @@ function SignUpPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+          />
+          <TestInput
+            label = "Referal Code (Optional)"
+            placeholder = "Enter a valid referal code"
+            value ={referralCode}
+            onChange={(e) => setReferralCode(e.target.value)}
+            mt="md"
           />
           <TextInput
             label="Email"
