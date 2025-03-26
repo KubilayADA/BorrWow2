@@ -4,14 +4,38 @@ import { SessionContext } from "../contexts/SessionContext";
 import { toast } from "react-toastify";
 
 function RedeemPage() {
-  const { isAuthenticated, userId, token } = useContext(SessionContext);
+  const { isAuthenticated, userId, token, isLoading } = useContext(SessionContext);
   const [user, setUser] = useState(null);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    if (!userId || isLoading) return; // Prevent fetching if userId is not set or loading
+
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Failed to load user data");
+        }
+
+        setUser(data);
+      } catch (error) {
+        toast.error("Failed to load user data");
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+
     const fetchItems = async () => {
       try {
-        // Use temporary items until proper endpoint is created
         const mockItems = [
           { id: 1, name: "Premium Toolset", cost: 50 },
           { id: 2, name: "Gardening Kit", cost: 75 },
@@ -25,58 +49,60 @@ function RedeemPage() {
     };
 
     fetchItems();
-  }, []);
+  }, [userId, token, isLoading]);
 
-  // Modified handleRedeem function
   const handleRedeem = async (itemId) => {
     try {
-      const item = items.find((item) => item.id === itemId);
-      if (!item) {
-        toast.error("Invalid item selection");
-        return;
-      }
-
-      if (!user || user.trustpoints < item.cost) {
-        toast.error(`Not enough points for ${item.name}`);
-        return;
-      }
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/${userId}/redeem`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ itemId: item.id, itemCost: item.cost }),
-        }
-      );
-
+      // Send redeem request to the backend
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/redeem`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          userId: userId,
+          itemId: itemId,
+        }),
+      });
+  
       const data = await response.json();
-      
+  
       if (!response.ok) {
-        throw new Error(data.error || "Redemption failed");
+        throw new Error(data.error || "Failed to redeem item");
       }
-
-      setUser(data.user);
-      toast.success(`Successfully redeemed ${item.name}!`);
+  
+      // Update user points after redemption
+      setUser((prevUser) => ({
+        ...prevUser,
+        trustpoints: prevUser.trustpoints - items.find(item => item.id === itemId).cost,
+      }));
+  
+      toast.success("Item redeemed successfully!");
     } catch (error) {
-      toast.error(error.message);
-      console.error("Redemption error:", error);
+      console.error("Error redeeming item:", error);
+      toast.error("Failed to redeem item");
     }
   };
+  
 
-
+  if (isLoading) {
+    return <div>Loading...</div>; // Show loading state until the user is ready
+  }
 
   return (
     <Container size="lg" py="xl">
       <Title order={1} mb="xl">
-        Redeem Your BorrWower Points: invite more friends to earn more points or redeem more items
+        Redeem Your BorrWower Points: OUR REDEEM PAGE IS CURRENTLY UNDER CONSTRUCTION. PLEASE CHECK BACK LATER.
       </Title>
       <Text size="xl" mb="xl" weight={500}>
         Current Balance: {user?.trustpoints || 0} Points
       </Text>
+      {user && (
+        <div>
+          <Text size="lg">Username: {user.username}</Text>
+        </div>
+      )}
 
       <div
         style={{

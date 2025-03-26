@@ -2,6 +2,7 @@ const router = require("express").Router();
 const userRoutes = require("./user.routes");
 const itemRoutes = require("./item.routes");
 const borrowRequestRoutes = require("./borrowRequest.routes");
+const redeemRoutes = require("./redeem.routes");
 
 // these are all the api routes e.g http://localhost:5005/api/items
 router.get("/", (req, res) => {
@@ -11,5 +12,6 @@ router.get("/", (req, res) => {
 router.use("/users", userRoutes);
 router.use("/items", itemRoutes);
 router.use("/borrowrequests", borrowRequestRoutes);
+router.use("/redeem", redeemRoutes);
 
 module.exports = router;

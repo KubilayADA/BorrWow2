@@ -99,19 +99,22 @@ router.delete("/:id", isAuthenticated, async (req, res) => {
 
 //Put temp items in -memory store for now
 
-router.post("/:userId/redeem", isAuthenticated, async (req, res) => {
+// Change this in redeem.routes.js
+router.post("/", isAuthenticated, async (req, res) => { // Changed from "/:userId/redeem"
   try {
-    const { itemId, itemCost } = req.body;
-    const user = await User.findById(req.params.userId);
+    // Get user from token instead of URL params
+    const user = await User.findById(req.tokenPayload.userId);
+    const { itemId } = req.body;
 
-    if (!user) return res.status(404).json({ error: "User not found" });
+    // Define your items properly (move tempItems to this file)
+    const redeemableItems = [
+      { id: 1, name: "Premium Toolset", cost: 50 },
+      { id: 2, name: "Gardening Kit", cost: 75 },
+      { id: 3, name: "DIY Starter Pack", cost: 100 },
+    ];
 
-    const item = tempItems.find(i => i.id === itemId);
+    const item = redeemableItems.find(i => i.id === itemId);
     if (!item) return res.status(400).json({ error: "Invalid item" });
-
-    if (item.cost !== itemCost) {
-      return res.status(400).json({ error: "Item cost mismatch" });
-    }
 
     if (user.trustpoints < item.cost) {
       return res.status(400).json({ error: "Insufficient trust points" });
@@ -130,11 +133,8 @@ router.post("/:userId/redeem", isAuthenticated, async (req, res) => {
 
     res.json({
       success: true,
-      user: {
-        _id: user._id,
-        trustpoints: user.trustpoints,
-        redeemedItems: user.redeemedItems
-      }
+      newBalance: user.trustpoints,
+      redeemedItem: item
     });
   } catch (error) {
     console.error('Redemption error:', error);
