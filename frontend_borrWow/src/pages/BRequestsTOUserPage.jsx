@@ -37,7 +37,7 @@ const BRequestsTOUserPage = () => {
   };
 
   if (error) return <p>Error: {error}</p>;
-  if (!requests.length) return <h1>There are no requests for you right now..  </h1>;
+  if (!requests.length) return <h1>There are no requests for you right now</h1>;
 
   return (
     <div className={styles.page}>
