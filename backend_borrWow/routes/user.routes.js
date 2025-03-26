@@ -76,11 +76,11 @@ router.put("/:id", isAuthenticated, async (req, res) => {
   }
 });
 
-// Delete user by ID (authenticated route)
+// del user by id
 router.delete("/:id", isAuthenticated, async (req, res) => {
   try {
     const { id } = req.params;
-    // Ensure that the user can only delete their own profile
+    // user only can delete their profile
     if (id !== req.tokenPayload.userId) {
       return res.status(403).json({ message: "Unauthorized" });
     }
@@ -97,30 +97,48 @@ router.delete("/:id", isAuthenticated, async (req, res) => {
   }
 });
 
+//Put temp items in -memory store for now
+
 router.post("/:userId/redeem", isAuthenticated, async (req, res) => {
   try {
-    const { itemId } = req.body;
+    const { itemId, itemCost } = req.body;
     const user = await User.findById(req.params.userId);
-    
-    // Implement your redemption logic
-    // Example:
-    const item = items.find(i => i.id === itemId);
+
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    const item = tempItems.find(i => i.id === itemId);
     if (!item) return res.status(400).json({ error: "Invalid item" });
-    
-    if (user.trustpoints < item.cost) {
-      return res.status(400).json({ error: "Not enough points" });
+
+    if (item.cost !== itemCost) {
+      return res.status(400).json({ error: "Item cost mismatch" });
     }
 
+    if (user.trustpoints < item.cost) {
+      return res.status(400).json({ error: "Insufficient trust points" });
+    }
+
+    // Update user
     user.trustpoints -= item.cost;
+    user.redeemedItems.push({
+      itemId: item.id,
+      name: item.name,
+      cost: item.cost,
+      redeemedAt: new Date()
+    });
+
     await user.save();
-    
-    res.json({ 
+
+    res.json({
       success: true,
-      newBalance: user.trustpoints,
-      redeemedItem: item
+      user: {
+        _id: user._id,
+        trustpoints: user.trustpoints,
+        redeemedItems: user.redeemedItems
+      }
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Redemption error:', error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

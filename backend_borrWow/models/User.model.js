@@ -37,8 +37,14 @@ const userSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "User",
-      },
+      }
     ],
+    redeemedItems: [{
+      itemId: Number,
+      name: String,
+      cost: Number,
+      redeemedAt: Date
+    }],
     
     inviteCode: {
       type: String,

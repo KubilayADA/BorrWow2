@@ -6,64 +6,68 @@ import { toast } from "react-toastify";
 function RedeemPage() {
   const { isAuthenticated, userId, token } = useContext(SessionContext);
   const [user, setUser] = useState(null);
-  const [items, setItems] = useState([
-    { id: 1, name: "Soundbar", cost: 50 },
-    { id: 2, name: "VR set", cost: 2000 },
-    { id: 3, name: "XBOX Series X", cost: 3000 },
-  ]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchItems = async () => {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const data = await response.json();
-        setUser(data);
+        // Use temporary items until proper endpoint is created
+        const mockItems = [
+          { id: 1, name: "Premium Toolset", cost: 50 },
+          { id: 2, name: "Gardening Kit", cost: 75 },
+          { id: 3, name: "DIY Starter Pack", cost: 100 },
+        ];
+        setItems(mockItems);
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching items:", error);
+        toast.error("Failed to load redeemable items");
       }
     };
 
-    if (isAuthenticated) {
-      fetchUser();
-    }
-  }, [isAuthenticated, userId, token]);
+    fetchItems();
+  }, []);
 
+  // Modified handleRedeem function
   const handleRedeem = async (itemId) => {
-    const item = items.find((item) => item.id === itemId);
-    if (user?.trustpoints >= item.cost) {
-      // minus the trust points 
-      const updatedUser = { ...user, trustpoints: user.trustpoints - item.cost };
-      setUser(updatedUser); // Update local state
+    try {
+      const item = items.find((item) => item.id === itemId);
+      if (!item) {
+        toast.error("Invalid item selection");
+        return;
+      }
 
-      try {
-        // trustpoints on the backend
-        await fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}`, {
-          method: "PATCH",
+      if (!user || user.trustpoints < item.cost) {
+        toast.error(`Not enough points for ${item.name}`);
+        return;
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/${userId}/redeem`,
+        {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ trustpoints: updatedUser.trustpoints }),
-        });
+          body: JSON.stringify({ itemId: item.id, itemCost: item.cost }),
+        }
+      );
 
-        // success notification
-        toast.success(`Congratulations! You've successfully redeemed ${item.name}.`);
-      } catch (error) {
-        console.error("Error updating user trust points:", error);
-        toast.error("There was an error processing your redemption.");
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || "Redemption failed");
       }
-    } else {
-      // notification if not enough points
-      toast.error(`Oops! You don’t have enough points to redeem ${item.name}.`);
+
+      setUser(data.user);
+      toast.success(`Successfully redeemed ${item.name}!`);
+    } catch (error) {
+      toast.error(error.message);
+      console.error("Redemption error:", error);
     }
   };
+
+
 
   return (
     <Container size="lg" py="xl">
