@@ -27,7 +27,7 @@ const SessionContextProvider = ({ children }) => {
       );
       if (response.status === 200) {
         const data = await response.json();
-        console.log("Verify Token Response:", data); // Log the response
+        console.log("Verify Token Response:", data); 
         setToken(tokenToVerify);
         setUserId(data.userId);
         setIsAuthenticated(true);

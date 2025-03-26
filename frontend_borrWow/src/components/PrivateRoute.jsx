@@ -6,7 +6,7 @@ const PrivateRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useContext(SessionContext);
 
   /*   console.log("Loading:", isLoading); // Debugging line
-  console.log("Authenticated:", isAuthenticated); // Debugging line
+  console.log("Authenticated:", isAuthenticated); // Debugging line gerekirse kullan  comment bırak
  */
   if (isLoading) {
     return <h1>Loading...</h1>;
