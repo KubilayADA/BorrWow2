@@ -3,7 +3,7 @@ import BRequestCard from "../components/BRequestCard";
 import styles from "../styles/ItemListPage.module.css";
 import { SessionContext } from "../contexts/SessionContext";
 import EditBRequestForm from "../components/EditBRequestForm";
-import { Modal } from "@mantine/core"; // Assuming you're using Mantine for UI components
+import { Modal } from "@mantine/core"; 
 
 const BRequestsBYUserPage = () => {
   const [requests, setRequests] = useState([]);
@@ -16,7 +16,7 @@ const BRequestsBYUserPage = () => {
     const fetchBYRequests = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/borrowrequests/requested`, // Updated endpoint
+          `${import.meta.env.VITE_API_URL}/api/borrowrequests/requested`, 
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ const BRequestsBYUserPage = () => {
   const handleUpdate = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/borrowrequests/requested`, // Endpoint to refresh data
+        `${import.meta.env.VITE_API_URL}/api/borrowrequests/requested`, 
         {
           headers: {
             Authorization: `Bearer ${token}`,
