@@ -29,8 +29,11 @@ const BRequestsTOUserPage = () => {
   };
 
   useEffect(() => {
-    fetchTORequests();
-  }, [token]);
+    if (token) {
+      fetchTORequests();
+    }
+  }, [token]); // Run when the token is available or changes
+  
 
   const handleUpdate = () => {
     fetchTORequests(); // Refetch requests when a status changes

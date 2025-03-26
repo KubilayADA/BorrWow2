@@ -166,27 +166,24 @@ router.put("/:id/accept", isAuthenticated, async (req, res) => {
 
 // Update the status of a borrow request to "rejected"
 router.put("/:id/reject", isAuthenticated, async (req, res) => {
-  const { id } = req.params;
-
   try {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: "Invalid ID" });
-    }
-
+    const { id } = req.params;
     const borrowRequest = await BorrowRequest.findById(id);
+
     if (!borrowRequest) {
       return res.status(404).json({ message: "Borrow request not found" });
     }
 
+    // Verify the logged-in user is the owner
     if (!borrowRequest.owner.equals(req.tokenPayload.userId)) {
       return res.status(403).json({
-        message: "You are not authorized to reject this borrow request",
+        message: "Only the item owner can reject requests",
       });
     }
 
     borrowRequest.status = "rejected";
     await borrowRequest.save();
-
+    
     res.json(borrowRequest);
   } catch (error) {
     res.status(400).json({ error: error.message });

@@ -23,6 +23,11 @@ const BRequestCard = ({
 
   const navigate = useNavigate();
 
+  // BRequestsTOUserPage.jsx
+const handleUpdate = async () => {
+  await fetchTORequests(); // Make sure to await the refresh
+};
+
   const handleDeleteRequest = async () => {
     try {
       const response = await fetch(
@@ -68,6 +73,28 @@ const BRequestCard = ({
     }
   };
 
+  const handleDenyRequest = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/borrowrequests/${_id}/reject`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error("Failed to deny request");
+      }
+  
+      onUpdate(); // Refresh the requests list
+    } catch (error) {
+      console.error("Error denying request", error);
+    }
+  };
+
   const handleCompleteRequest = async () => {
     try {
       const response = await fetch(
@@ -99,9 +126,9 @@ const BRequestCard = ({
 
   return (
     <div className={styles.card}>
-      {item.imageUrl && (
-        <img src={item.imageUrl} alt={item.itemname} className={styles.image} />
-      )}
+      {item && item.imageUrl && (
+  <img src={item.imageUrl} alt={item.itemname || 'Item image'} className={styles.image} />
+)}
       <div className={statusClass}>{status}</div>
       <div className={styles.details}>
         <div className={styles.itemNameContainer}>
@@ -153,15 +180,15 @@ const BRequestCard = ({
                     className={styles.button}
                   >
                     Accept
-                  </Button>
+                    </Button>
                   <Button
-                    onClick={handleDeleteRequest}
-                    variant="outline"
-                    color="red"
-                    size="xs"
-                    className={styles.button}
-                  >
-                    Deny
+                  onClick={handleDenyRequest}  
+                  variant="outline"
+                  color="red"
+                  size="xs"
+                  className={styles.button}
+>
+                  Deny
                   </Button>
                 </>
               )
