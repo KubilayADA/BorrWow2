@@ -1,5 +1,5 @@
 .page {
-  padding: 40px; 
+  padding: 20px; 
   background-color: #f9f9f9; 
   text-align: center;
 }
@@ -15,6 +15,7 @@
   gap: 20px; 
   justify-content: center;
   text-align: left;
+  padding: 0 10px;
 }
 
 .card {
@@ -28,9 +29,39 @@
   margin: 16px;
   position: relative;
   text-align: left;
+  flex: 1 1 45%;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
+@media (max-width: 768px) {
+  .itemsContainer {
+    gap: 15px; 
+  }
+
+  .card {
+    max-width: 100%; 
+    margin: 10px 0; 
+  }
+
+  .page {
+    padding: 20px 10px; 
+  }
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: 1.2rem; 
+    margin-bottom: 15px;
+  }
+
+  .card {
+    max-width: 100%; 
+    padding: 10px; 
+  }
+
+  .itemsContainer {
+    gap: 10px; 
+  }
+}}
