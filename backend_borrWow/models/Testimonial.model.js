@@ -6,12 +6,12 @@ const testimonialSchema = new Schema(
     content: {
       type: String,
       required: true,
-      minlength: 10, // Minimum length for the testimonial content
+      minlength: 10, 
     },
     rating: {
       type: Number,
-      min: 1, // Minimum rating value
-      max: 5, // Maximum rating value
+      min: 1, 
+      max: 5, 
       required: true,
     },
     reviewer: {

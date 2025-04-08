@@ -103,9 +103,9 @@
 
   .cash {
     width: 200%;
-  max-width: 350px; /* Ensures image doesn't become too large */
+  max-width: 350px; 
   height: auto;
-  margin-bottom: 10px; /* Adds space below the image */
+  margin-bottom: 10px; 
   align-items: center;
   }
 
