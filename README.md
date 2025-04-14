@@ -36,6 +36,7 @@ BorrWow is a full-stack web application designed to foster a sharing economy by 
 Currently, trust points are awarded through a referral-based invite system, where users gain points by inviting friends who join the platform. Future development will extend this system to include trust points for successful borrowing transactions, further enhancing user credibility and community engagement.
 
 Users can:
+
 ✅ List items they’re willing to lend  
 ✅ Browse and request items from others  
 ✅ Earn trust points (currently via referrals, with borrowing rewards coming soon)  
