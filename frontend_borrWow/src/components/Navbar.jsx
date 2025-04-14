@@ -71,7 +71,7 @@ function Navbar() {
     <Link to="/invitefriends" className={styles.mobileLink}>INVITE</Link>
     <Link to="/items" className={styles.mobileLink}>BORROW</Link>
     <Link
-  to={`${import.meta.env.VITE_BACKEND_URL}/api/ssr-page`}
+  to={`${import.meta.env.VITE_API_URL}/api/ssr-page`}
   className={styles.ssrLink}
   target="_blank"
   rel="noopener noreferrer"
@@ -103,7 +103,7 @@ function Navbar() {
           BORROW
         </Link>
         <Link
-  to={`${import.meta.env.VITE_BACKEND_URL}/api/ssr-page`}
+  to={`${import.meta.env.VITE_API_URL}/api/ssr-page`}
   className={styles.ssrLink}
   target="_blank"
   rel="noopener noreferrer"
