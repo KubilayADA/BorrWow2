@@ -29,7 +29,7 @@ const itemSchema = new Schema(
       required: [true, "Category is required."],
     },
     location: {
-      type: String, // Added location field
+      type: String, 
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
