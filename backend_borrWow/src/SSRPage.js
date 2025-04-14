@@ -1,18 +1,13 @@
 const React = require("react");
 
 function SSRPage() {
-
   const handleButtonClick = () => {
-    window.location.href = "https://borrwow2-1-jqmk.onrender.com/"; 
+    window.location.href = "https://borrwow2-1-jqmk.onrender.com/";
   };
+
   return React.createElement("html", null, [
     React.createElement("head", { key: 1 }, [
       React.createElement("title", { key: 1 }, "SSR Welcoming Page"),
-      React.createElement("link", {
-        key: 2,
-        rel: "stylesheet",
-        href: "/api/ssr-page-styles", 
-      }),
     ]),
     React.createElement("body", { key: 2 }, [
       React.createElement("div", { className: "container", key: 1 }, [
@@ -31,12 +26,12 @@ function SSRPage() {
           { key: 3 },
           "Rendered on the server for SE_19!"
         ),
-        
+      
         React.createElement(
           "button",
           {
             key: 4,
-            onclick: handleButtonClick,
+            onClick: handleButtonClick, 
             style: {
               marginTop: "20px",
               padding: "10px 20px",
