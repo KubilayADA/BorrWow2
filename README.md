@@ -434,7 +434,7 @@ This project demonstrates expertise in building a full-stack application using t
 ## Installation
 1. Clone the Repository
     git clone https://github.com/KubilayADA/borrWow.git
-    cd borrWow
+        cd borrWow
 2. Install Dependencies
     npm install
 3. Start the Development Server
