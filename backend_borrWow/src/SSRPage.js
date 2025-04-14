@@ -1,6 +1,10 @@
 const React = require("react");
 
 function SSRPage() {
+
+  const handleButtonClick = () => {
+    window.location.href = "https://borrwow2-1-jqmk.onrender.com/"; 
+  };
   return React.createElement("html", null, [
     React.createElement("head", { key: 1 }, [
       React.createElement("title", { key: 1 }, "SSR Welcoming Page"),
@@ -32,7 +36,7 @@ function SSRPage() {
           "button",
           {
             key: 4,
-            onclick: "window.location.href='https://borrwow2-1-jqmk.onrender.com/'",
+            onclick: handleButtonClick,
             style: {
               marginTop: "20px",
               padding: "10px 20px",
