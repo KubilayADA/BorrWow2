@@ -70,6 +70,14 @@ function Navbar() {
     <Link to="/about" className={styles.mobileLink}>ABOUT</Link>
     <Link to="/invitefriends" className={styles.mobileLink}>INVITE</Link>
     <Link to="/items" className={styles.mobileLink}>BORROW</Link>
+    <Link
+  to={`${import.meta.env.VITE_BACKEND_URL}/api/ssr-page`}
+  className={styles.ssrLink}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  SSR PAGE
+</Link>
     {isAuthenticated && user && (
       <Link to="/redeem" className={styles.mobileLink}>
         POINTS: {user.trustpoints || 0}
@@ -94,6 +102,14 @@ function Navbar() {
         <Link to="/items" className={styles.borrowLink}>
           BORROW
         </Link>
+        <Link
+  to={`${import.meta.env.VITE_BACKEND_URL}/api/ssr-page`}
+  className={styles.ssrLink}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  SSR PAGE
+</Link>
        {isAuthenticated && user && (
         <Link to="/redeem" className={styles.pointsLink}>
        POINTS : {user.trustpoints || 0}
