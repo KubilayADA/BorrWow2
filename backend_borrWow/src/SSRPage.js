@@ -32,7 +32,9 @@ function SSRPage() {
           "button",
           {
             key: 4,
-            onClick: "window.location.href='https://borrwow2-1-jqmk.onrender.com/'", 
+            onClick: () => {
+              window.location.href = "https://borrwow2-1-jqmk.onrender.com/";
+            }, 
             style: {
               marginTop: "20px",
               padding: "10px 20px",
