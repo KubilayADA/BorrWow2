@@ -432,16 +432,20 @@ The app includes full user authentication, private routes on the frontend, and p
 This project demonstrates expertise in building a full-stack application using the MERN stack, with a focus on secure authentication, efficient data relationships, and a seamless user experience.
 
 ## Installation
-1. Clone the Repository
-    git clone https://github.com/KubilayADA/borrWow.git
-        cd borrWow
-2. Install Dependencies
-    npm install
-3. Start the Development Server
-    npm run dev
-4. Access the Application
-    Open your browser and navigate to http://localhost:3000
 
+To get the project up and running on your local machine, follow these steps:
+
+ **Clone the Repository**
+
+   First, clone the repository from GitHub and navigate into the project directory:
+
+   ```bash
+   git clone https://github.com/KubilayADA/borrWow.git
+   cd borrWow
+   npm install
+   npm run dev
+   Open your browser and navigate to http://localhost:3000
+   ```
 ## Recent Updates
 
 - Users can now invite friends to join the platform using their unique invite codes.
