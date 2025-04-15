@@ -19,7 +19,7 @@ router.get("/ssr-page", (req, res) => {
         </div>
         <script>
           function handleGoBack() {
-            window.location.href = 'https://borrwow2-8w5m.onrender.com/';
+            window.location.href = 'https://borrwow2-1-jqmk.onrender.com/';
           }
         </script>
       </body>
