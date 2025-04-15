@@ -44,6 +44,53 @@ Users can:
 
 The app includes full user authentication, private routes on the frontend, and protected routes on the backend to ensure a secure and seamless user experience.
 
+## Module Requirements for SE_19 
+
+This project was redevelopped to meet the following module requirements for WEB TECHNOLOGIES BASICS (SE_19) at CODE UNIVERSITY OF BERLIN:
+
+1. **Determine when and how to utilize web technologies as a software solution**
+
+Implementation:
+- Built a full-stack solution using the MERN stack (MongoDB, Express, React, Node.js) to address the needs of a borrowing platform.
+- The frontend uses React for dynamic user interfaces, while the backend uses Express for RESTful APIs and MongoDB for persistent data storage.
+- Applied server-side rendering (SSR) for the /ssr-page route to demonstrate SEO-friendly content delivery and client-side rendering (CSR) for dynamic user interactions.
+
+
+2. **Create simple websites with responsive layouts (i.e., accessible HTML and CSS)**:
+ Implementation:
+- Built a full-stack solution using the MERN stack (MongoDB, Express, React, Node.js) to address the needs of a sharing economy platform.
+- The frontend uses React for dynamic user interfaces, while the backend uses Express for RESTful APIs and MongoDB for persistent data storage.
+- Applied server-side rendering (SSR) for the /ssr-page route to demonstrate SEO-friendly content delivery and client-side rendering (CSR) for dynamic user interactions.
+
+3. **Differentiate between the role of the web client and web server**:
+ Implementation:
+- The frontend handles user interactions, routing, and state management using React and React Router.
+- The backend manages API endpoints, authentication, and database interactions using Express and Mongoose.
+Middleware such as auth.middleware.js ensures secure communication between the client and server by validating JWT tokens.
+
+4. **Create dynamic web backend applications (e.g., including dynamic routing)**:
+ Implementation:
+- Created dynamic routes for resources such as users (/api/users), items (/api/items), and borrowing requests (/api/borrowrequests).
+- Used route parameters (e.g., /api/items/:id) to handle specific resource operations like fetching, updating, and deleting items.
+- Applied middleware for route protection, ensuring only authenticated users can access sensitive routes.
+
+5. **Apply both client-side and server-side rendering for dynamically changing content**:
+ Implementation:
+- CSR: React dynamically updates the UI based on user interactions and API responses (e.g., ItemListPage, SearchResultsPage).
+- SSR: The /ssr-page route renders HTML on the server, showcasing server-side rendering for faster initial load times. /ssr-page only build for showcase purposes, not for production for SE_19. 
+
+6. **Handle long-lived state and dynamically changing data on the backend (i.e., databases, ORMs/ODMs)**:
+ Implementation:
+- Used MongoDB as the database and Mongoose as the ODM to define schemas and manage relationships between models (User, Item, BorrowRequest).
+Implemented features such as:
+- Trust Points System: Users earn and redeem points, with changes persisted in the database.
+- Borrowing Requests: Requests are dynamically updated with statuses like pending, accepted, and completed.
+
+7. **Deploy and securely run dynamic web backends in a web server environment**:
+  Implementation:
+- Backend deployed on Render and frontend deployed also on Render.
+- Used .env files to securely manage sensitive information such as database credentials (MONGO_URI) and API URLs (VITE_API_URL).
+- Configured CORS to allow secure communication between the frontend and backend.
 ## Key Features 
 
 ### User Authentication
