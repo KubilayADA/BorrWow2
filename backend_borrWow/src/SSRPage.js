@@ -1,10 +1,7 @@
 const React = require("react");
 
 function SSRPage() {
-  const handleButtonClick = () => {
-    window.location.href = "https://borrwow2-1-jqmk.onrender.com/";
-  };
-
+  
   return React.createElement("html", null, [
     React.createElement("head", { key: 1 }, [
       React.createElement("title", { key: 1 }, "SSR Welcoming Page"),
@@ -31,7 +28,7 @@ function SSRPage() {
           "button",
           {
             key: 4,
-            onClick: handleButtonClick, 
+            onclick: "handleGoBack()",
             style: {
               marginTop: "20px",
               padding: "10px 20px",
@@ -45,6 +42,12 @@ function SSRPage() {
           "Go Back"
         ),
       ]),
+      React.createElement("script", { key: 5, dangerouslySetInnerHTML: { __html: `
+        function handleGoBack() {
+          console.log('Go Back button clicked');
+          window.location.href = 'https://borrwow2-8w5m.onrender.com/';
+        }
+      ` } }),
     ]),
   ]);
 }
