@@ -1,23 +1,27 @@
 const express = require("express");
-const React = require("react");
-const ReactDOMServer = require("react-dom/server");
-const SSRPage = require("../src/SSRPage");
-
 const router = express.Router();
 
-
 router.get("/ssr-page", (req, res) => {
-  const html = ReactDOMServer.renderToString(React.createElement(SSRPage));
   res.send(`
     <!DOCTYPE html>
     <html lang="en">
       <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SSR Page</title>
+        <title>SSR Welcoming Page</title>
       </head>
       <body>
-        <div id="root">${html}</div>
+        <div class="container">
+          <h1>This is an SSR WELCOMING PAGE</h1>
+          <p>This page is only made for showing knowledge of SSR.</p>
+          <p>Rendered on the server for SE_19!</p>
+          <button onclick="handleGoBack()" style="margin-top: 20px; padding: 10px 20px; background-color: #224eff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+            Go Back
+          </button>
+        </div>
+        <script>
+          function handleGoBack() {
+            window.location.href = 'https://borrwow2-8w5m.onrender.com/';
+          }
+        </script>
       </body>
     </html>
   `);

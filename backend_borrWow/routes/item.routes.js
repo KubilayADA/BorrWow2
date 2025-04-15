@@ -130,7 +130,7 @@ router.delete('/:id', isAuthenticated, async (req, res, next) => {
   }
 });
 
-// Use error handling middleware
+
 router.use(errorHandler);
 
 module.exports = router;
