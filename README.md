@@ -86,6 +86,8 @@ Implemented features such as:
 - Trust Points System: Users earn and redeem points, with changes persisted in the database.
 - Borrowing Requests: Requests are dynamically updated with statuses like pending, accepted, and completed.
 
+- To ensure the database is accessible beyond the local environment, the project’s data was successfully transferred from MongoDB Compass to MongoDB Atlas, enabling remote access and improved scalability.
+
 7. **Deploy and securely run dynamic web backends in a web server environment**:
   Implementation:
 - Backend deployed on Render and frontend deployed also on Render.
