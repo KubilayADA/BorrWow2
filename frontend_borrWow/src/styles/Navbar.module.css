@@ -29,22 +29,7 @@
   flex-direction: column; 
   gap: 15px; 
 }
-.ssrLink {
-  margin: 0;
-  padding: 0px 0px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #224eff;
-  background-color: transparent;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
 
-.ssrLink:hover {
-  color: #000;
-  transform: translateX(5px);
-}
 
 .mobileLink {
   display: block;
@@ -81,6 +66,21 @@
   .buttonContainer {
     margin-left: auto;
   }
+  .mobileMenu .ssrLink {
+    display: block;
+    padding: 0.8rem 0; 
+    text-decoration: none;
+    font-weight: 800; 
+    font-size: 1.1rem; 
+    border-bottom: 1px solid #eee; 
+    transition: all 0.2s ease;
+  }
+  
+  .mobileMenu .ssrLink:hover {
+    color: #000;
+    transform: translateX(5px); 
+  }
+
 }
 
 main {
@@ -118,8 +118,9 @@ main {
 .borrowLink,
 .favoritesLink,
 .shareLink,
-.aboutLink {
-  /* Add styling for About link */
+.aboutLink,
+.ssrLink {
+  
   text-decoration: none;
   color: #224eff;
   font-weight: bold;
@@ -130,7 +131,8 @@ main {
 .favoritesLink:hover,
 .shareLink:hover,
 .aboutLink:hover,
-.inviteLink:hover {
+.inviteLink:hover
+ {
   color: black;
 }
 
