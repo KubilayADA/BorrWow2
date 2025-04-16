@@ -74,8 +74,7 @@ function Navbar() {
   to={`${import.meta.env.VITE_API_URL}/api/ssr-page`}
   className={styles.ssrLink}
   target="_blank"
-  rel="noopener noreferrer"
->
+  rel="noopener noreferrer">
   SSR PAGE
 </Link>
     {isAuthenticated && user && (
@@ -106,8 +105,7 @@ function Navbar() {
         to={`${import.meta.env.VITE_API_URL}/api/ssr-page`}
         className={styles.ssrLink}
         target="_blank"
-        rel="noopener noreferrer"
-        >
+        rel="noopener noreferrer">
         SSR PAGE
         </Link>
        {isAuthenticated && user && (

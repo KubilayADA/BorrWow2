@@ -29,6 +29,22 @@
   flex-direction: column; 
   gap: 15px; 
 }
+.ssrLink {
+  margin: 0;
+  padding: 0px 0px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #224eff;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ssrLink:hover {
+  color: #000;
+  transform: translateX(5px);
+}
 
 .mobileLink {
   display: block;
@@ -174,7 +190,8 @@ main {
   .borrowLink,
   .favoritesLink,
   .shareLink,
-  .pointsLink {
+  .pointsLink
+  .ssrLink {
     display: none;
   }
 }
@@ -239,7 +256,7 @@ main {
   .aboutLink {
     
     
-    /* Hide the About link on mobile if needed */
+   
     display: none;
   }
 }
@@ -308,5 +325,12 @@ main {
   
   .searchContainer {
     margin-right: 5px;
+  }
+}
+@media (hover: none) {
+  .mobileLink:hover,
+  .ssrLink:hover {
+    color: inherit; 
+    transform: none; 
   }
 }
