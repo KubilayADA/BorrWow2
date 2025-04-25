@@ -22,6 +22,7 @@ router.get("/ssr-page", async (req, res) => {
       <html lang="en">
         <head>
           <title>SSR Welcoming Page</title>
+         
           <style>
             body {
               font-family: Arial, sans-serif;
@@ -72,7 +73,9 @@ router.get("/ssr-page", async (req, res) => {
         <body>
           <div class="container">
             <h1>Welcome to BorrWow!</h1>
+             <h2> THIS PAGE CREATED TO DEMONSTRATE KNOWLEDGE OF SSR TO MEET THE REQUIREMENTS OF THE PROJECT </h2>
             <p>Here are some items available for borrowing:</p>
+            <p> This page renders on the server side and displays dynamically changing data </p>
             ${itemList}
             <button onclick="handleGoBack()">Go Back</button>
           </div>
