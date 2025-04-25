@@ -24,5 +24,3 @@ require("./error-handling")(app);
 
 module.exports = app;
 
-const ssrDynamicRoutes = require("./routes/ssr.dynamicPage.routes");
-app.use("/api", ssrDynamicRoutes);
