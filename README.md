@@ -2,9 +2,13 @@
 
 Welcome to the BorrWow project! This repository provides a comprehensive overview of the application, including its purpose, technical structure, and recent updates. The current implementation is a revised and improved version of an original group project developed during the Ironhack Berlin Full-Stack Web Development Intensive course, where I collaborated with two teammates.
 
-Due to technical issues and broken functionality in the original version, I decided to rebuild and refactor the project from the ground up, focusing on improved structure, functionality, and maintainability. You can view the initial project and my contributions here: 
+Due to technical issues and broken functionality in the original version, I decided to rebuild and refactor the project from the ground up, focusing on improved structure, functionality, and maintainability. You can view the initial project from IRONHACK BERLIN and my contributions here: 
 
 https://github.com/KubilayADA/backend_borrWow || https://github.com/KubilayADA/frontend_borrWow
+
+Current project: 
+- Frontend Repository: https://github.com/KubilayADA/BorrWow2/tree/main/frontend_borrWow
+- Backend Repository: https://github.com/KubilayADA/BorrWow2/tree/main/backend_borrWow
 
 ## Table of Contents
 - [Overview](#overview)
