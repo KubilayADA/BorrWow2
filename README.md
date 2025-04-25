@@ -512,12 +512,14 @@ To get the project up and running on your local machine, follow these steps:
 - Further development is planned to include borrowing rewards for successful borrowing transactions.
 - Smooth scrolling has been implemented for a more user-friendly experience.
 - Adjusted method visibility for better control:
-"Delete" method now only accessible by request creators.
-"Deny" action visible only to item owners.
-Improved checks for item existence and null values in item image URLs, with a fallback for alt attributes.
+- "Delete" method now only accessible by request creators.
+- "Deny" action visible only to item owners.
+- Improved checks for item existence and null values in item image URLs, with a fallback for alt attributes.
+- The SSR Welcoming Page now dynamically renders database content as styled cards with responsive design, showcasing server-side rendering for dynamically changing data.
 ## LINKS
 - [Frontend Repository](https://github.com/KubilayADA/BorrWow2/tree/main/frontend_borrWow)
 - [Backend Repository](https://github.com/KubilayADA/BorrWow2/tree/main/backend_borrWow)
+- [Deployment](https://borrwow2-1-jqmk.onrender.com/) (It takes over 50 secs to run the backend, since it is free version of Render) 
 
 ## TRELLO BOARD TO-DO LIST: 
 (https://trello.com/b/MNf4qzx3/borwow-to-do)
