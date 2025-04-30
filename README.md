@@ -9,6 +9,7 @@ https://github.com/KubilayADA/backend_borrWow || https://github.com/KubilayADA/f
 Current project: 
 - Frontend Repository: https://github.com/KubilayADA/BorrWow2/tree/main/frontend_borrWow
 - Backend Repository: https://github.com/KubilayADA/BorrWow2/tree/main/backend_borrWow
+- Deployment https://borrwow2-1-jqmk.onrender.com/ (It takes over 50 secs to run the backend, since it is free version of Render)
 
 ## Table of Contents
 - [Overview](#overview)
